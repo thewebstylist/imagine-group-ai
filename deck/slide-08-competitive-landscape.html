@@ -4,23 +4,23 @@
 <style>
 main{ gap:12px; padding-top:14px; }
 .zones{ display:flex; gap:14px; flex:1; min-height:0; }
-.panel-title{ font-weight:600; font-size:13.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); }
-.panel-sub{ font-weight:300; font-size:11px; color:var(--muted); line-height:1.45; margin-top:3px; }
+.panel-title{ font-weight:600; font-size:14.3px; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); }
+.panel-sub{ font-weight:300; font-size:12.4px; color:var(--muted); line-height:1.45; margin-top:3px; }
 /* left: market leaders */
 .zl{ flex:1.05; display:flex; flex-direction:column; gap:9px; }
 .zl .card{ padding:11px 14px; display:flex; flex-direction:column; gap:4px; flex:1; justify-content:center; }
 .comp-name{ font-weight:700; font-size:16px; letter-spacing:.05em; color:var(--cream); }
-.comp-name small{ font-weight:300; font-size:10px; letter-spacing:.06em; color:var(--muted); margin-left:8px; }
-.comp-focus{ font-weight:500; font-size:11px; letter-spacing:.05em; color:var(--gold); }
-.comp-body{ font-weight:300; font-size:10.8px; color:var(--cream-dim); line-height:1.45; }
+.comp-name small{ font-weight:300; font-size:11.4px; letter-spacing:.06em; color:var(--muted); margin-left:8px; }
+.comp-focus{ font-weight:500; font-size:12.4px; letter-spacing:.05em; color:var(--gold); }
+.comp-body{ font-weight:300; font-size:12.2px; color:var(--cream-dim); line-height:1.45; }
 /* middle: fragmented -> integrated */
 .zm{ flex:1.15; display:flex; flex-direction:column; gap:8px; }
 .frag{ display:flex; flex-direction:column; align-items:center; gap:5px; }
 .fragit{ width:230px; display:flex; align-items:center; gap:10px; border:1px solid rgba(201,124,74,.35);
   border-radius:9px; padding:6px 12px; background:rgba(201,124,74,.05); }
 .fragit svg{ width:16px; height:16px; color:var(--copper); flex:0 0 auto; }
-.fragit b{ font-weight:600; font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--cream); display:block; }
-.fragit i{ font-style:normal; font-weight:300; font-size:9.5px; color:var(--muted); }
+.fragit b{ font-weight:600; font-size:11.9px; letter-spacing:.09em; text-transform:uppercase; color:var(--cream); display:block; }
+.fragit i{ font-style:normal; font-weight:300; font-size:10.9px; color:var(--muted); }
 .fragx{ color:var(--copper); height:12px; display:flex; } .fragx svg{ width:12px; height:12px; }
 .hub{ position:relative; width:238px; height:238px; margin:2px auto 0; }
 .hub .ring{ position:absolute; inset:24px; border:1px solid var(--line); border-radius:50%; }
@@ -38,22 +38,22 @@ main{ gap:12px; padding-top:14px; }
 .eco-list{ display:grid; grid-template-columns:1fr 1fr; gap:12px 16px; margin-top:10px; flex:1; align-content:space-evenly; }
 .eit{ display:flex; align-items:flex-start; gap:9px; }
 .eit svg{ width:16px; height:16px; color:var(--gold); flex:0 0 auto; margin-top:1px; }
-.eit b{ display:block; font-weight:600; font-size:10.6px; letter-spacing:.07em; text-transform:uppercase; color:var(--gold); }
-.eit i{ font-style:normal; font-weight:300; font-size:10px; color:var(--cream-dim); line-height:1.35; }
+.eit b{ display:block; font-weight:600; font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:var(--gold); }
+.eit i{ font-style:normal; font-weight:300; font-size:11.4px; color:var(--cream-dim); line-height:1.35; }
 /* category creation band */
 .cat{ display:flex; align-items:center; gap:20px; padding:13px 22px; }
 .cat .sep{ width:1px; align-self:stretch; background:linear-gradient(180deg,transparent,var(--line),transparent); }
 .cat .t{ font-weight:600; font-size:14.5px; letter-spacing:.12em; text-transform:uppercase; }
-.cat .b{ font-weight:300; font-size:11px; color:var(--cream-dim); line-height:1.5; margin-top:3px; }
+.cat .b{ font-weight:300; font-size:12.4px; color:var(--cream-dim); line-height:1.5; margin-top:3px; }
 .cat .b b{ font-weight:600; color:var(--gold); }
-.cat .q{ font-weight:300; font-size:11.5px; color:var(--cream-dim); line-height:1.55; }
-.cat .q b{ display:block; font-weight:600; font-size:12.5px; color:var(--cream); margin-top:2px; line-height:1.5; }
+.cat .q{ font-weight:300; font-size:12.9px; color:var(--cream-dim); line-height:1.55; }
+.cat .q b{ display:block; font-weight:600; font-size:13.3px; color:var(--cream); margin-top:2px; line-height:1.5; }
 .cat .q b em{ font-style:normal; color:var(--gold); }
 .strip{ display:flex; align-items:stretch; border:1px solid var(--line); border-radius:14px; background:var(--card-deep); }
 .strip>div{ flex:1; display:flex; align-items:center; gap:10px; padding:10px 14px; }
 .strip .sep{ flex:0 0 1px; padding:0; background:linear-gradient(180deg,transparent,var(--line),transparent); }
-.strip .tt{ font-weight:600; font-size:10.2px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
-.strip .bb{ font-weight:300; font-size:9.6px; color:var(--cream-dim); line-height:1.35; margin-top:2px; }
+.strip .tt{ font-weight:600; font-size:11.6px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
+.strip .bb{ font-weight:300; font-size:11px; color:var(--cream-dim); line-height:1.35; margin-top:2px; }
 .strip .coin{ width:34px; height:34px; } .strip .coin svg{ width:16px; height:16px; }
 </style></head>
 <body><script src="icons.js"></script>

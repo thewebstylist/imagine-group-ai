@@ -7,20 +7,20 @@ main{ gap:12px; padding-top:14px; }
 .panels .card{ padding:14px 18px 12px; display:flex; flex-direction:column; gap:8px; }
 .pt{ text-align:center; }
 .pt b{ font-weight:600; font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); display:block; }
-.pt i{ font-style:normal; font-weight:500; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+.pt i{ font-style:normal; font-weight:500; font-size:11.4px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
 /* growth */
 .growth{ flex:1.05; }
 .cagr{ display:flex; align-items:baseline; gap:10px; justify-content:center; }
-.cagr b{ font-weight:600; font-size:38px; }
-.cagr span{ font-weight:500; font-size:10.5px; letter-spacing:.14em; color:var(--cream-dim); }
+.cagr b{ font-weight:700; font-size:56px; filter:drop-shadow(0 0 18px rgba(227,190,100,.45)); }
+.cagr span{ font-weight:500; font-size:11.9px; letter-spacing:.14em; color:var(--cream-dim); }
 .bars{ flex:1; display:flex; align-items:flex-end; justify-content:center; gap:17px; padding:4px 4px 0; }
 .bar{ display:flex; flex-direction:column; align-items:center; gap:5px; width:56px; }
-.bar .v{ font-weight:600; font-size:11px; color:var(--cream); letter-spacing:.02em; }
+.bar .v{ font-weight:600; font-size:12.4px; color:var(--cream); letter-spacing:.02em; }
 .bar .col{ width:34px; border-radius:5px 5px 2px 2px;
   background:linear-gradient(180deg,#F6E7B2,#D9B45B 30%,#8C6317 100%);
   box-shadow:0 0 14px rgba(217,180,91,.25); }
-.bar .y{ font-weight:400; font-size:10px; letter-spacing:.06em; color:var(--muted); }
-.gnote{ border-top:1px solid var(--line-soft); padding-top:8px; font-weight:300; font-size:10.8px; color:var(--cream-dim); line-height:1.45; text-align:center; }
+.bar .y{ font-weight:400; font-size:11.4px; letter-spacing:.06em; color:var(--muted); }
+.gnote{ border-top:1px solid var(--line-soft); padding-top:8px; font-weight:300; font-size:12.2px; color:var(--cream-dim); line-height:1.45; text-align:center; }
 /* mix */
 .mix{ flex:1.15; }
 .mixwrap{ flex:1; display:flex; align-items:center; gap:16px; justify-content:center; }
@@ -35,35 +35,35 @@ main{ gap:12px; padding-top:14px; }
 .leg{ display:flex; align-items:flex-start; gap:9px; }
 .leg .sw{ width:11px; height:11px; border-radius:3px; margin-top:2px; flex:0 0 auto; }
 .leg b{ font-weight:600; font-size:14px; color:var(--cream); }
-.leg i{ font-style:normal; display:block; font-weight:300; font-size:10.6px; color:var(--cream-dim); line-height:1.3; }
-.mnote{ border-top:1px solid var(--line-soft); padding-top:8px; font-weight:300; font-size:10.8px; color:var(--cream-dim); line-height:1.45; text-align:center; }
+.leg i{ font-style:normal; display:block; font-weight:300; font-size:12px; color:var(--cream-dim); line-height:1.3; }
+.mnote{ border-top:1px solid var(--line-soft); padding-top:8px; font-weight:300; font-size:12.2px; color:var(--cream-dim); line-height:1.45; text-align:center; }
 /* metrics */
 .metrics{ flex:1.35; }
 .mgrid{ flex:1; display:grid; grid-template-columns:1fr 1fr; gap:7px 10px; }
 .met{ border:1px solid var(--line-soft); border-radius:10px; padding:7px 12px;
   background:rgba(244,227,169,.03); display:flex; flex-direction:column; justify-content:center; }
-.met .k{ font-weight:600; font-size:9.3px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.met .k{ font-weight:600; font-size:10.7px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
 .met .v{ font-weight:600; font-size:16.5px; color:var(--gold); margin-top:1px; }
-.met .v small{ font-weight:400; font-size:9.5px; letter-spacing:.05em; color:var(--cream-dim); margin-left:6px; }
+.met .v small{ font-weight:400; font-size:10.9px; letter-spacing:.05em; color:var(--cream-dim); margin-left:6px; }
 .metnote{ border-top:1px solid var(--line-soft); padding-top:8px; display:flex; gap:9px; align-items:center;
-  font-weight:300; font-size:10.8px; color:var(--cream-dim); line-height:1.4; }
+  font-weight:300; font-size:12.2px; color:var(--cream-dim); line-height:1.4; }
 .metnote svg{ width:15px; height:15px; color:var(--gold); flex:0 0 auto; }
 /* compounds band */
 .comp{ display:flex; align-items:center; gap:18px; padding:13px 22px; }
 .comp .lead b{ display:block; font-weight:600; font-size:16px; letter-spacing:.1em; text-transform:uppercase; }
-.comp .lead span{ display:block; font-weight:300; font-size:11px; color:var(--cream-dim); line-height:1.45; margin-top:4px; max-width:230px; }
+.comp .lead span{ display:block; font-weight:300; font-size:12.4px; color:var(--cream-dim); line-height:1.45; margin-top:4px; max-width:230px; }
 .comp .sep{ width:1px; align-self:stretch; background:linear-gradient(180deg,transparent,var(--line),transparent); }
 .cchain{ flex:1; display:flex; align-items:flex-start; justify-content:space-between; gap:6px; }
 .cstep{ display:flex; flex-direction:column; align-items:center; gap:5px; width:104px; text-align:center; }
-.cstep b{ font-weight:600; font-size:9.8px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); }
-.cstep i{ font-style:normal; font-weight:300; font-size:9.3px; color:var(--muted); line-height:1.3; }
+.cstep b{ font-weight:600; font-size:11.2px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); }
+.cstep i{ font-style:normal; font-weight:300; font-size:10.7px; color:var(--muted); line-height:1.3; }
 .cchain .arrow{ margin-top:14px; } .cchain .arrow svg{ width:14px; height:14px; }
-.comp .out{ font-weight:600; font-size:10.6px; letter-spacing:.09em; text-transform:uppercase; color:var(--gold); line-height:1.6; }
+.comp .out{ font-weight:600; font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--gold); line-height:1.6; }
 .strip{ display:flex; align-items:stretch; border:1px solid var(--line); border-radius:14px; background:var(--card-deep); }
 .strip>div{ flex:1; display:flex; align-items:center; gap:10px; padding:10px 14px; }
 .strip .sep{ flex:0 0 1px; padding:0; background:linear-gradient(180deg,transparent,var(--line),transparent); }
-.strip .tt{ font-weight:600; font-size:10.2px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
-.strip .bb{ font-weight:300; font-size:9.6px; color:var(--cream-dim); line-height:1.35; margin-top:2px; }
+.strip .tt{ font-weight:600; font-size:11.6px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
+.strip .bb{ font-weight:300; font-size:11px; color:var(--cream-dim); line-height:1.35; margin-top:2px; }
 .strip .coin{ width:34px; height:34px; } .strip .coin svg{ width:16px; height:16px; }
 </style></head>
 <body><script src="icons.js"></script>
@@ -119,10 +119,10 @@ main{ gap:12px; padding-top:14px; }
         <div class="mgrid">
           <div class="met"><div class="k">Customer Acquisition Cost (CAC)</div>
             <div class="v">&lt; $1,500<small>ENTERPRISE</small></div>
-            <div class="v" style="font-size:13px">&lt; $350<small>PROFESSIONAL</small></div></div>
+            <div class="v" style="font-size:13.8px">&lt; $350<small>PROFESSIONAL</small></div></div>
           <div class="met"><div class="k">Lifetime Value (LTV)</div>
             <div class="v">&gt; $18,000<small>ENTERPRISE</small></div>
-            <div class="v" style="font-size:13px">&gt; $4,500<small>PROFESSIONAL</small></div></div>
+            <div class="v" style="font-size:13.8px">&gt; $4,500<small>PROFESSIONAL</small></div></div>
           <div class="met"><div class="k">LTV : CAC Ratio</div><div class="v">8–12x<small>TARGET</small></div></div>
           <div class="met"><div class="k">Gross Margin</div><div class="v">70%+<small>LONG-TERM TARGET</small></div></div>
           <div class="met"><div class="k">Recurring Revenue</div><div class="v">60%+<small>BY FY2031</small></div></div>
