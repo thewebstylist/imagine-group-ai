@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Slide 8 — The Competitive Landscape</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+main{ gap:12px; padding-top:14px; }
+.zones{ display:flex; gap:14px; flex:1; min-height:0; }
+.panel-title{ font-weight:600; font-size:13.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--cream); }
+.panel-sub{ font-weight:300; font-size:11px; color:var(--muted); line-height:1.45; margin-top:3px; }
+/* left: market leaders */
+.zl{ flex:1.05; display:flex; flex-direction:column; gap:9px; }
+.zl .card{ padding:11px 14px; display:flex; flex-direction:column; gap:4px; flex:1; justify-content:center; }
+.comp-name{ font-weight:700; font-size:16px; letter-spacing:.05em; color:var(--cream); }
+.comp-name small{ font-weight:300; font-size:10px; letter-spacing:.06em; color:var(--muted); margin-left:8px; }
+.comp-focus{ font-weight:500; font-size:11px; letter-spacing:.05em; color:var(--gold); }
+.comp-body{ font-weight:300; font-size:10.8px; color:var(--cream-dim); line-height:1.45; }
+/* middle: fragmented -> integrated */
+.zm{ flex:1.15; display:flex; flex-direction:column; gap:8px; }
+.frag{ display:flex; flex-direction:column; align-items:center; gap:5px; }
+.fragit{ width:230px; display:flex; align-items:center; gap:10px; border:1px solid rgba(201,124,74,.35);
+  border-radius:9px; padding:6px 12px; background:rgba(201,124,74,.05); }
+.fragit svg{ width:16px; height:16px; color:var(--copper); flex:0 0 auto; }
+.fragit b{ font-weight:600; font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--cream); display:block; }
+.fragit i{ font-style:normal; font-weight:300; font-size:9.5px; color:var(--muted); }
+.fragx{ color:var(--copper); height:12px; display:flex; } .fragx svg{ width:12px; height:12px; }
+.hub{ position:relative; width:238px; height:238px; margin:2px auto 0; }
+.hub .ring{ position:absolute; inset:24px; border:1px solid var(--line); border-radius:50%; }
+.hub .core{ position:absolute; inset:70px; border:1.5px solid var(--gold); border-radius:50%;
+  display:flex; align-items:center; justify-content:center; background:rgba(217,180,91,.05);
+  box-shadow:0 0 34px rgba(217,180,91,.22), inset 0 0 20px rgba(217,180,91,.07); }
+.hub .core img{ width:64px; height:auto; filter:drop-shadow(0 0 10px rgba(217,180,91,.35)); }
+.hub .sat{ position:absolute; width:34px; height:34px; border-radius:50%; border:1px solid var(--gold);
+  background:#141008; color:var(--gold); display:flex; align-items:center; justify-content:center;
+  box-shadow:0 0 12px rgba(217,180,91,.2); }
+.hub .sat svg{ width:16px; height:16px; }
+/* right: ecosystem list */
+.zr{ flex:1.5; }
+.zr .card{ height:100%; padding:13px 16px 11px; display:flex; flex-direction:column; }
+.eco-list{ display:grid; grid-template-columns:1fr 1fr; gap:12px 16px; margin-top:10px; flex:1; align-content:space-evenly; }
+.eit{ display:flex; align-items:flex-start; gap:9px; }
+.eit svg{ width:16px; height:16px; color:var(--gold); flex:0 0 auto; margin-top:1px; }
+.eit b{ display:block; font-weight:600; font-size:10.6px; letter-spacing:.07em; text-transform:uppercase; color:var(--gold); }
+.eit i{ font-style:normal; font-weight:300; font-size:10px; color:var(--cream-dim); line-height:1.35; }
+/* category creation band */
+.cat{ display:flex; align-items:center; gap:20px; padding:13px 22px; }
+.cat .sep{ width:1px; align-self:stretch; background:linear-gradient(180deg,transparent,var(--line),transparent); }
+.cat .t{ font-weight:600; font-size:14.5px; letter-spacing:.12em; text-transform:uppercase; }
+.cat .b{ font-weight:300; font-size:11px; color:var(--cream-dim); line-height:1.5; margin-top:3px; }
+.cat .b b{ font-weight:600; color:var(--gold); }
+.cat .q{ font-weight:300; font-size:11.5px; color:var(--cream-dim); line-height:1.55; }
+.cat .q b{ display:block; font-weight:600; font-size:12.5px; color:var(--cream); margin-top:2px; line-height:1.5; }
+.cat .q b em{ font-style:normal; color:var(--gold); }
+.strip{ display:flex; align-items:stretch; border:1px solid var(--line); border-radius:14px; background:var(--card-deep); }
+.strip>div{ flex:1; display:flex; align-items:center; gap:10px; padding:10px 14px; }
+.strip .sep{ flex:0 0 1px; padding:0; background:linear-gradient(180deg,transparent,var(--line),transparent); }
+.strip .tt{ font-weight:600; font-size:10.2px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
+.strip .bb{ font-weight:300; font-size:9.6px; color:var(--cream-dim); line-height:1.35; margin-top:2px; }
+.strip .coin{ width:34px; height:34px; } .strip .coin svg{ width:16px; height:16px; }
+</style></head>
+<body><script src="icons.js"></script>
+<div class="stage">
+
+  <header class="slide" style="padding-bottom:14px">
+    <div class="badge">8</div>
+    <div class="titles">
+      <h1 class="gtx" style="font-size:42px">The Competitive Landscape</h1>
+      <div class="kicker">Today’s market is fragmented. <b>Our ecosystem connects it.</b></div>
+    </div>
+    <div class="brandmark"><img src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE Group AI"></div>
+  </header>
+  <div class="rule"></div>
+
+  <main>
+    <div class="zones">
+      <!-- existing market leaders -->
+      <div class="zl">
+        <div>
+          <div class="panel-title">Existing Market Leaders</div>
+          <div class="panel-sub">Strong companies. Narrow focus. Each solves only a piece of the puzzle.</div>
+        </div>
+        <div class="card">
+          <div class="comp-name">coursera</div>
+          <div class="comp-focus">Online courses &amp; university partnerships</div>
+          <div class="comp-body">Massive catalog and reach, but limited implementation, certification depth, and real-world application.</div>
+        </div>
+        <div class="card">
+          <div class="comp-name">UDACITY<small>PART OF ACCENTURE</small></div>
+          <div class="comp-focus">Technical AI &amp; career training</div>
+          <div class="comp-body">Strong in nanodegrees and skills training, but lacks ecosystem, long-term certifications, and software solutions.</div>
+        </div>
+        <div class="card">
+          <div class="comp-name">multiverse</div>
+          <div class="comp-focus">Enterprise workforce AI training</div>
+          <div class="comp-body">Excellent enterprise reach and apprenticeship model, but limited creative, software, and innovation capabilities.</div>
+        </div>
+      </div>
+
+      <!-- fragmented vs integrated -->
+      <div class="zm">
+        <div style="text-align:center">
+          <div class="panel-title" style="color:var(--copper)">Fragmented Market</div>
+          <div class="panel-sub">Siloed solutions. Disconnected outcomes.</div>
+        </div>
+        <div class="frag">
+          <div class="fragit"><svg><use href="#i-grad"/></svg><div><b>Courses</b><i>Education Platforms</i></div></div>
+          <div class="fragx"><svg><use href="#i-x"/></svg></div>
+          <div class="fragit"><svg><use href="#i-briefcase"/></svg><div><b>Workforce</b><i>Training &amp; Certifications</i></div></div>
+          <div class="fragx"><svg><use href="#i-x"/></svg></div>
+          <div class="fragit"><svg><use href="#i-code"/></svg><div><b>Software</b><i>AI Tools &amp; Products</i></div></div>
+          <div class="fragx"><svg><use href="#i-x"/></svg></div>
+          <div class="fragit"><svg><use href="#i-users"/></svg><div><b>Consulting</b><i>Implementation Services</i></div></div>
+        </div>
+        <div style="text-align:center; margin-top:2px">
+          <div class="panel-title" style="color:var(--gold)">Integrated Ecosystem</div>
+          <div class="panel-sub">One platform. Endless possibilities.</div>
+        </div>
+        <div class="hub">
+          <div class="ring"></div>
+          <div class="core"><img src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE"></div>
+          <div class="sat" style="left:102px; top:7px"><svg><use href="#i-grad"/></svg></div>
+          <div class="sat" style="left:172px; top:36px"><svg><use href="#i-award"/></svg></div>
+          <div class="sat" style="left:201px; top:102px"><svg><use href="#i-gear"/></svg></div>
+          <div class="sat" style="left:172px; top:168px"><svg><use href="#i-film"/></svg></div>
+          <div class="sat" style="left:102px; top:197px"><svg><use href="#i-users"/></svg></div>
+          <div class="sat" style="left:32px; top:168px"><svg><use href="#i-code"/></svg></div>
+          <div class="sat" style="left:3px; top:102px"><svg><use href="#i-nodes"/></svg></div>
+          <div class="sat" style="left:32px; top:36px"><svg><use href="#i-bulb"/></svg></div>
+        </div>
+      </div>
+
+      <!-- imagine ecosystem -->
+      <div class="zr">
+        <div class="card gold">
+          <div>
+            <div class="panel-title gtx" style="font-size:16px">IMAGINE GROUP AI&trade;</div>
+            <div class="panel-sub" style="color:var(--cream-dim)">THE COMPLETE AI ADOPTION ECOSYSTEM</div>
+          </div>
+          <div class="eco-list">
+            <div class="eit"><svg><use href="#i-grad"/></svg><div><b>Education</b><i>Hart Academy AI&trade; curriculum</i></div></div>
+            <div class="eit"><svg><use href="#i-award"/></svg><div><b>Industry Certifications</b><i>Role-based &amp; industry-recognized credentials</i></div></div>
+            <div class="eit"><svg><use href="#i-bank"/></svg><div><b>Future Accreditation Vision</b><i>Building toward institutional accreditation</i></div></div>
+            <div class="eit"><svg><use href="#i-gear"/></svg><div><b>AI Implementation</b><i>Strategy, adoption &amp; transformation support</i></div></div>
+            <div class="eit"><svg><use href="#i-flask"/></svg><div><b>AI Innovation Labs</b><i>Hands-on labs &amp; real-world experimentation</i></div></div>
+            <div class="eit"><svg><use href="#i-clapper"/></svg><div><b>Creative Studios</b><i>Content, media &amp; IP creation at scale</i></div></div>
+            <div class="eit"><svg><use href="#i-robot"/></svg><div><b>AI Software &amp; Agents</b><i>Proprietary tools, platforms &amp; AI agents</i></div></div>
+            <div class="eit"><svg><use href="#i-cube"/></svg><div><b>Industry Solutions</b><i>Plug-and-play AI solutions for any industry</i></div></div>
+            <div class="eit"><svg><use href="#i-users"/></svg><div><b>Community</b><i>Creators, learners, experts &amp; innovators</i></div></div>
+            <div class="eit"><svg><use href="#i-handshake"/></svg><div><b>Enterprise Partnerships</b><i>Long-term impact &amp; shared innovation</i></div></div>
+            <div class="eit"><svg><use href="#i-bolt"/></svg><div><b>Plug-and-Play AI Solutions</b><i>Rapid deployment. Measurable ROI.</i></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- category creation -->
+    <div class="card gold cat">
+      <div class="coin"><svg><use href="#i-target"/></svg></div>
+      <div style="flex:1.35">
+        <div class="t gtx">Category Creation</div>
+        <div class="b">Most companies focus on teaching AI. Others build software. Others provide consulting.
+          <b>IMAGINE Group integrates education, implementation, creative production, software, and community
+          into one scalable ecosystem designed to accelerate AI adoption.</b></div>
+      </div>
+      <div class="sep"></div>
+      <div class="coin"><svg><use href="#i-star"/></svg></div>
+      <div class="q" style="flex:1">We’re not competing to build the best AI course.
+        <b>We’re building the <em>operating system</em> that connects the entire AI adoption lifecycle.</b></div>
+    </div>
+
+    <div class="strip">
+      <div><div class="coin"><svg><use href="#i-puzzle"/></svg></div>
+        <div><div class="tt">Integrated Ecosystem</div><div class="bb">One platform. All the pieces working together.</div></div></div>
+      <div class="sep"></div>
+      <div><div class="coin"><svg><use href="#i-shieldstar"/></svg></div>
+        <div><div class="tt">Multiple Revenue Engines</div><div class="bb">Education, software, solutions, and services.</div></div></div>
+      <div class="sep"></div>
+      <div><div class="coin"><svg><use href="#i-chartup"/></svg></div>
+        <div><div class="tt">Higher Lifetime Value</div><div class="bb">More touchpoints. Deeper relationships. More impact.</div></div></div>
+      <div class="sep"></div>
+      <div><div class="coin"><svg><use href="#i-nodes"/></svg></div>
+        <div><div class="tt">Network Effect</div><div class="bb">Every participant strengthens the entire ecosystem.</div></div></div>
+      <div class="sep"></div>
+      <div><div class="coin"><svg><use href="#i-globe"/></svg></div>
+        <div><div class="tt">Global Scalability</div><div class="bb">Digital-first. Industry-agnostic. Borderless impact.</div></div></div>
+    </div>
+  </main>
+
+  <footer class="slide">
+    <div class="foot-tag" style="color:var(--muted)">IMAGINE GROUP AI&trade;</div>
+    <div class="foot-spacer"></div>
+    <div class="foot-tag">One Ecosystem<i>•</i>Five Engines<i>•</i>Endless Possibilities</div>
+    <div class="foot-spacer"></div>
+    <div class="foot-copy">© 2026 IMAGINE Group AI</div>
+  </footer>
+</div>
+</body></html>

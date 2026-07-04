@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Slide 9 — The Economics of the Ecosystem</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+main{ gap:12px; padding-top:14px; }
+.panels{ display:flex; gap:12px; flex:1.25; min-height:0; }
+.panels .card{ padding:14px 18px 12px; display:flex; flex-direction:column; gap:8px; }
+.pt{ text-align:center; }
+.pt b{ font-weight:600; font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); display:block; }
+.pt i{ font-style:normal; font-weight:500; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+/* growth */
+.growth{ flex:1.05; }
+.cagr{ display:flex; align-items:baseline; gap:10px; justify-content:center; }
+.cagr b{ font-weight:600; font-size:38px; }
+.cagr span{ font-weight:500; font-size:10.5px; letter-spacing:.14em; color:var(--cream-dim); }
+.bars{ flex:1; display:flex; align-items:flex-end; justify-content:center; gap:17px; padding:4px 4px 0; }
+.bar{ display:flex; flex-direction:column; align-items:center; gap:5px; width:56px; }
+.bar .v{ font-weight:600; font-size:11px; color:var(--cream); letter-spacing:.02em; }
+.bar .col{ width:34px; border-radius:5px 5px 2px 2px;
+  background:linear-gradient(180deg,#F6E7B2,#D9B45B 30%,#8C6317 100%);
+  box-shadow:0 0 14px rgba(217,180,91,.25); }
+.bar .y{ font-weight:400; font-size:10px; letter-spacing:.06em; color:var(--muted); }
+.gnote{ border-top:1px solid var(--line-soft); padding-top:8px; font-weight:300; font-size:10.8px; color:var(--cream-dim); line-height:1.45; text-align:center; }
+/* mix */
+.mix{ flex:1.15; }
+.mixwrap{ flex:1; display:flex; align-items:center; gap:16px; justify-content:center; }
+.donut{ position:relative; width:196px; height:196px; flex:0 0 auto; }
+.donut .ring{ position:absolute; inset:0; border-radius:50%;
+  background:conic-gradient(#E2BE62 0 36%, #F6E7B2 36% 58%, #A87B1F 58% 76%, #6E4E12 76% 90%, #C97C4A 90% 100%);
+  box-shadow:0 0 26px rgba(217,180,91,.18); }
+.donut .hole{ position:absolute; inset:44px; border-radius:50%; background:#0F0C08;
+  display:flex; align-items:center; justify-content:center; border:1px solid var(--line-soft); }
+.donut .hole img{ width:62px; height:auto; }
+.legend{ display:flex; flex-direction:column; gap:8px; }
+.leg{ display:flex; align-items:flex-start; gap:9px; }
+.leg .sw{ width:11px; height:11px; border-radius:3px; margin-top:2px; flex:0 0 auto; }
+.leg b{ font-weight:600; font-size:14px; color:var(--cream); }
+.leg i{ font-style:normal; display:block; font-weight:300; font-size:10.6px; color:var(--cream-dim); line-height:1.3; }
+.mnote{ border-top:1px solid var(--line-soft); padding-top:8px; font-weight:300; font-size:10.8px; color:var(--cream-dim); line-height:1.45; text-align:center; }
+/* metrics */
+.metrics{ flex:1.35; }
+.mgrid{ flex:1; display:grid; grid-template-columns:1fr 1fr; gap:7px 10px; }
+.met{ border:1px solid var(--line-soft); border-radius:10px; padding:7px 12px;
+  background:rgba(244,227,169,.03); display:flex; flex-direction:column; justify-content:center; }
+.met .k{ font-weight:600; font-size:9.3px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.met .v{ font-weight:600; font-size:16.5px; color:var(--gold); margin-top:1px; }
+.met .v small{ font-weight:400; font-size:9.5px; letter-spacing:.05em; color:var(--cream-dim); margin-left:6px; }
+.metnote{ border-top:1px solid var(--line-soft); padding-top:8px; display:flex; gap:9px; align-items:center;
+  font-weight:300; font-size:10.8px; color:var(--cream-dim); line-height:1.4; }
+.metnote svg{ width:15px; height:15px; color:var(--gold); flex:0 0 auto; }
+/* compounds band */
+.comp{ display:flex; align-items:center; gap:18px; padding:13px 22px; }
+.comp .lead b{ display:block; font-weight:600; font-size:16px; letter-spacing:.1em; text-transform:uppercase; }
+.comp .lead span{ display:block; font-weight:300; font-size:11px; color:var(--cream-dim); line-height:1.45; margin-top:4px; max-width:230px; }
+.comp .sep{ width:1px; align-self:stretch; background:linear-gradient(180deg,transparent,var(--line),transparent); }
+.cchain{ flex:1; display:flex; align-items:flex-start; justify-content:space-between; gap:6px; }
+.cstep{ display:flex; flex-direction:column; align-items:center; gap:5px; width:104px; text-align:center; }
+.cstep b{ font-weight:600; font-size:9.8px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); }
+.cstep i{ font-style:normal; font-weight:300; font-size:9.3px; color:var(--muted); line-height:1.3; }
+.cchain .arrow{ margin-top:14px; } .cchain .arrow svg{ width:14px; height:14px; }
+.comp .out{ font-weight:600; font-size:10.6px; letter-spacing:.09em; text-transform:uppercase; color:var(--gold); line-height:1.6; }
+.strip{ display:flex; align-items:stretch; border:1px solid var(--line); border-radius:14px; background:var(--card-deep); }
+.strip>div{ flex:1; display:flex; align-items:center; gap:10px; padding:10px 14px; }
+.strip .sep{ flex:0 0 1px; padding:0; background:linear-gradient(180deg,transparent,var(--line),transparent); }
+.strip .tt{ font-weight:600; font-size:10.2px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
+.strip .bb{ font-weight:300; font-size:9.6px; color:var(--cream-dim); line-height:1.35; margin-top:2px; }
+.strip .coin{ width:34px; height:34px; } .strip .coin svg{ width:16px; height:16px; }
+</style></head>
+<body><script src="icons.js"></script>
+<div class="stage">
+
+  <header class="slide" style="padding-bottom:14px">
+    <div class="badge">9</div>
+    <div class="titles">
+      <h1><span class="gtx">The Economics</span> <span style="color:var(--cream)">of the Ecosystem</span></h1>
+      <div class="kicker"><b>Scalable. Recurring.</b> Platform economics.</div>
+    </div>
+    <div class="brandmark"><img src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE Group AI"></div>
+  </header>
+  <div class="rule"></div>
+
+  <main>
+    <div class="panels">
+      <div class="card growth">
+        <div class="pt"><b>Revenue Growth</b><i>5-Year Forecast</i></div>
+        <div class="cagr"><b class="gtx">96%</b><span>5-YEAR<br>CAGR</span></div>
+        <div class="bars">
+          <div class="bar"><div class="v">$5.9M</div><div class="col" style="height:14px"></div><div class="y">FY2027</div></div>
+          <div class="bar"><div class="v">$16.7M</div><div class="col" style="height:40px"></div><div class="y">FY2028</div></div>
+          <div class="bar"><div class="v">$36.5M</div><div class="col" style="height:88px"></div><div class="y">FY2029</div></div>
+          <div class="bar"><div class="v">$72.5M</div><div class="col" style="height:175px"></div><div class="y">FY2030</div></div>
+          <div class="bar"><div class="v">$118.5M</div><div class="col" style="height:286px"></div><div class="y">FY2031</div></div>
+        </div>
+        <div class="gnote">Strong topline growth driven by multiple revenue engines, platform scale, and increasing recurring revenue.</div>
+      </div>
+
+      <div class="card mix">
+        <div class="pt"><b>Revenue Mix</b><i>By FY2031</i></div>
+        <div class="mixwrap">
+          <div class="donut">
+            <div class="ring"></div>
+            <div class="hole"><img src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE"></div>
+          </div>
+          <div class="legend">
+            <div class="leg"><div class="sw" style="background:#E2BE62"></div><div><b>36%</b><i>Software / SaaS / AI Agents</i></div></div>
+            <div class="leg"><div class="sw" style="background:#F6E7B2"></div><div><b>22%</b><i>Education &amp; Certification</i></div></div>
+            <div class="leg"><div class="sw" style="background:#A87B1F"></div><div><b>18%</b><i>Enterprise Solutions</i></div></div>
+            <div class="leg"><div class="sw" style="background:#6E4E12"></div><div><b>14%</b><i>Industry AI Solutions</i></div></div>
+            <div class="leg"><div class="sw" style="background:#C97C4A"></div><div><b>10%</b><i>Media / IP / Licensing</i></div></div>
+          </div>
+        </div>
+        <div class="mnote">Diversified revenue streams create resilience, margin expansion, and long-term value.</div>
+      </div>
+
+      <div class="card metrics">
+        <div class="pt"><b>Key Financial &amp; Business Metrics</b><i>By FY2031 Targets</i></div>
+        <div class="mgrid">
+          <div class="met"><div class="k">Customer Acquisition Cost (CAC)</div>
+            <div class="v">&lt; $1,500<small>ENTERPRISE</small></div>
+            <div class="v" style="font-size:13px">&lt; $350<small>PROFESSIONAL</small></div></div>
+          <div class="met"><div class="k">Lifetime Value (LTV)</div>
+            <div class="v">&gt; $18,000<small>ENTERPRISE</small></div>
+            <div class="v" style="font-size:13px">&gt; $4,500<small>PROFESSIONAL</small></div></div>
+          <div class="met"><div class="k">LTV : CAC Ratio</div><div class="v">8–12x<small>TARGET</small></div></div>
+          <div class="met"><div class="k">Gross Margin</div><div class="v">70%+<small>LONG-TERM TARGET</small></div></div>
+          <div class="met"><div class="k">Recurring Revenue</div><div class="v">60%+<small>BY FY2031</small></div></div>
+          <div class="met"><div class="k">Operational Profitability</div><div class="v">Target<small>FY2030</small></div></div>
+          <div class="met"><div class="k">Active Customers (est.)</div><div class="v">25K+<small>BY FY2031</small></div></div>
+          <div class="met"><div class="k">SaaS Gross Retention</div><div class="v">85%+<small>TARGET ANNUAL RETENTION</small></div></div>
+        </div>
+        <div class="metnote"><svg><use href="#i-star"/></svg>Platform leverage drives improving unit economics, higher margins, and sustainable profitability.</div>
+      </div>
+    </div>
+
+    <div class="card gold comp">
+      <div class="lead">
+        <b class="gtx">Why This Model Compounds</b>
+        <span>One customer creates multiple touchpoints and revenue opportunities across the ecosystem.</span>
+      </div>
+      <div class="sep"></div>
+      <div class="cchain">
+        <div class="cstep"><div class="coin sm"><svg><use href="#i-grad"/></svg></div><b>Education</b><i>Acquire &amp; educate new talent</i></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="cstep"><div class="coin sm"><svg><use href="#i-award"/></svg></div><b>Certification</b><i>Verify skills &amp; create trusted credentials</i></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="cstep"><div class="coin sm"><svg><use href="#i-monitor"/></svg></div><b>Implementation</b><i>Apply AI solutions in real-world use</i></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="cstep"><div class="coin sm"><svg><use href="#i-cube"/></svg></div><b>Software / AI Agents</b><i>Drive efficiency with proprietary tools</i></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="cstep"><div class="coin sm"><svg><use href="#i-building"/></svg></div><b>Enterprise Solutions</b><i>Scale impact across organizations</i></div>
+        <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="cstep"><div class="coin sm"><svg><use href="#i-cycle"/></svg></div><b>Recurring Revenue</b><i>Long-term value through subscriptions &amp; renewals</i></div>
+      </div>
+      <div class="sep"></div>
+      <div class="out">Stronger relationships.<br>Higher lifetime value.<br>Expanding ecosystem.</div>
+    </div>
+
+    <div class="strip">
+      <div><div class="coin"><svg><use href="#i-users"/></svg></div>
+        <div><div class="tt">Multiple Growth Drivers</div><div class="bb">Education, software, enterprise, media, and partnerships fuel scale.</div></div></div>
+      <div class="sep"></div>
+      <div><div class="coin"><svg><use href="#i-gear"/></svg></div>
+        <div><div class="tt">Operating Leverage</div><div class="bb">Platform scale improves margins over time.</div></div></div>
+      <div class="sep"></div>
+      <div><div class="coin"><svg><use href="#i-dollar"/></svg></div>
+        <div><div class="tt">Higher LTV</div><div class="bb">Cross-sell across the ecosystem increases lifetime value.</div></div></div>
+      <div class="sep"></div>
+      <div><div class="coin"><svg><use href="#i-nodes"/></svg></div>
+        <div><div class="tt">Network Effects</div><div class="bb">More users, partners, and solutions strengthen the entire platform.</div></div></div>
+      <div class="sep"></div>
+      <div><div class="coin"><svg><use href="#i-globe"/></svg></div>
+        <div><div class="tt">Global Opportunity</div><div class="bb">AI adoption is accelerating across industries worldwide.</div></div></div>
+    </div>
+  </main>
+
+  <footer class="slide">
+    <div class="foot-tag" style="color:var(--muted)">IMAGINE GROUP AI&trade;</div>
+    <div class="foot-spacer"></div>
+    <div class="foot-tag">One Ecosystem<i>•</i>Five Engines<i>•</i>Endless Possibilities</div>
+    <div class="foot-spacer"></div>
+    <div class="foot-copy">© 2026 IMAGINE Group AI</div>
+  </footer>
+</div>
+</body></html>

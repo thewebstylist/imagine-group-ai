@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Slide 7 — The Team</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+main{ gap:14px; padding-top:16px; }
+.team{ display:flex; gap:18px; flex:1; min-height:0; justify-content:center; }
+.member{ flex:1; max-width:400px; display:flex; flex-direction:column; overflow:hidden; }
+.photo{ position:relative; height:452px; overflow:hidden; flex:0 0 auto; }
+.photo img{ width:100%; height:100%; object-fit:cover; object-position:top center; display:block;
+  filter:saturate(.96); }
+.photo::after{ content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(11,9,7,0) 62%, rgba(11,9,7,.92) 100%);
+  }
+.photo .goldline{ position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.minfo{ padding:16px 22px 18px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.mname{ font-weight:600; font-size:21px; letter-spacing:.11em; text-transform:uppercase; }
+.mrole{ font-weight:500; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--cream); }
+.mdiv{ width:52px; height:1px; background:linear-gradient(90deg,var(--gold),transparent); margin:2px 0; }
+.mbio{ font-weight:300; font-size:12.3px; color:var(--cream-dim); line-height:1.55; }
+.mtag{ margin-top:auto; padding-top:11px; border-top:1px solid var(--line-soft);
+  display:flex; align-items:center; gap:9px;
+  font-weight:600; font-size:10.3px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); }
+.mtag svg{ width:16px; height:16px; flex:0 0 auto; }
+.purpose{ display:flex; align-items:center; gap:22px; padding:15px 26px; }
+.purpose .lbl{ font-weight:600; font-size:13px; letter-spacing:.24em; text-transform:uppercase; white-space:nowrap; }
+.purpose .sep{ width:1px; align-self:stretch; background:linear-gradient(180deg,transparent,var(--line),transparent); }
+.purpose .q{ font-weight:300; font-size:14.5px; color:var(--cream-dim); line-height:1.55; }
+.purpose .q b{ font-weight:500; color:var(--cream); }
+</style></head>
+<body><script src="icons.js"></script>
+<div class="stage">
+
+  <header class="slide">
+    <div class="badge">7</div>
+    <div class="titles">
+      <h1 class="gtx">The Team</h1>
+      <div class="kicker">The people behind the ecosystem. <b>Human creativity, amplified by AI.</b></div>
+    </div>
+    <div class="brandmark"><img src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE Group AI"></div>
+  </header>
+  <div class="rule"></div>
+
+  <main>
+    <div class="team">
+      <div class="card member">
+        <div class="photo">
+          <img src="../IMAGINE Group Ai Team sterling-williams.png" alt="Sterling Williams">
+          <div class="goldline"></div>
+        </div>
+        <div class="minfo">
+          <div class="mname gtx">Sterling Williams</div>
+          <div class="mrole">Co-Founder &amp; Chief Executive Officer</div>
+          <div class="mdiv"></div>
+          <div class="mbio">Creative director and brand technologist leading the IMAGINE vision&mdash;uniting
+            media, design, and artificial intelligence into one connected ecosystem that moves people
+            and elevates brands.</div>
+          <div class="mtag"><svg><use href="#i-film"/></svg>Creative &amp; IP Engine</div>
+        </div>
+      </div>
+
+      <div class="card member">
+        <div class="photo">
+          <img src="../IMAGINE-Group-Ai-christina-hart.jpg" alt="Christina Hart">
+          <div class="goldline"></div>
+        </div>
+        <div class="minfo">
+          <div class="mname gtx">Christina Hart</div>
+          <div class="mrole">Co-Founder &amp; Chief Education Officer</div>
+          <div class="mdiv"></div>
+          <div class="mbio">Architect of the Hart Academy AI&trade; curriculum&mdash;building the education,
+            certification, and talent engine that turns AI skills into in-demand careers across
+            every industry.</div>
+          <div class="mtag"><svg><use href="#i-grad"/></svg>Education &amp; Talent Engine</div>
+        </div>
+      </div>
+
+      <div class="card member">
+        <div class="photo">
+          <img src="../Joh-Reinguard-linkedin-profile-pic-blk-blazer.jpg" alt="John Reinguard">
+          <div class="goldline"></div>
+        </div>
+        <div class="minfo">
+          <div class="mname gtx">John Reinguard</div>
+          <div class="mrole">Co-Founder &amp; Chief Strategy Officer</div>
+          <div class="mdiv"></div>
+          <div class="mbio">Veteran executive leading enterprise partnerships, go-to-market execution,
+            and scalable growth&mdash;turning the IMAGINE ecosystem into measurable business
+            outcomes worldwide.</div>
+          <div class="mtag"><svg><use href="#i-target"/></svg>Strategy &amp; Execution Engine</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card gold purpose">
+      <div class="lbl gtx">Our Purpose</div>
+      <div class="sep"></div>
+      <div class="q">We combine human creativity with artificial intelligence to create
+        <b>stories, systems and experiences that move people and elevate brands.</b></div>
+    </div>
+  </main>
+
+  <footer class="slide">
+    <div class="foot-tag" style="color:var(--muted)">IMAGINE GROUP AI&trade;</div>
+    <div class="foot-spacer"></div>
+    <div class="foot-tag">One Ecosystem<i>•</i>Five Engines<i>•</i>Endless Possibilities</div>
+    <div class="foot-spacer"></div>
+    <div class="foot-copy">© 2026 IMAGINE Group AI</div>
+  </footer>
+</div>
+</body></html>
