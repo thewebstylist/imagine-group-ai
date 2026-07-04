@@ -255,3 +255,7 @@ ul.b li::before{ content:''; position:absolute; left:0; top:8px; width:5px; heig
   border-radius:50%; background:linear-gradient(135deg,#F6E7B2,#8C6317);
   box-shadow:0 0 7px rgba(217,180,91,.7); }
 ul.b li b{ font-weight:500; color:var(--cream); }
+
+/* print */
+@page{ size:1536px 1024px; margin:0; }
+@media print{ html,body{width:1536px;height:1024px} .stage{break-inside:avoid} }
