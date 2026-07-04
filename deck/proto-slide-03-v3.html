@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>V3 Prototype — How Are We Solving This?</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+/* ============ V3 "EDITORIAL" — asymmetric split, giant numerals ============ */
+.stage{ flex-direction:row; }
+/* left rail: the statement */
+.rail{
+  width:472px; flex:0 0 auto; position:relative; z-index:2;
+  padding:56px 44px 48px 56px; display:flex; flex-direction:column;
+  background:linear-gradient(105deg, rgba(30,23,12,.55), rgba(11,9,7,0) 88%);
+}
+.rail::after{ content:''; position:absolute; top:40px; bottom:40px; right:0; width:1px;
+  background:linear-gradient(180deg,transparent,var(--gold) 30%,var(--gold) 70%,transparent);
+  box-shadow:0 0 18px rgba(227,190,100,.55); }
+.rail .eyebrow{ margin-bottom:26px; }
+.bigtitle{
+  font-weight:700; font-size:83px; line-height:.96; letter-spacing:.01em;
+  text-transform:uppercase; color:var(--cream); text-shadow:0 2px 34px rgba(0,0,0,.6);
+}
+.bigtitle .gtx{ filter:drop-shadow(0 0 26px rgba(227,190,100,.4)); }
+.rail .kick{
+  margin-top:26px; font-weight:500; font-size:15px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--cream); line-height:1.85;
+}
+.rail .kick b{ color:var(--gold); font-weight:600; }
+.rail .intro{
+  margin-top:26px; font-weight:300; font-size:16.5px; line-height:1.72; color:var(--cream-dim);
+}
+.rail .intro b{ font-weight:600; color:var(--gold); }
+.quote{
+  margin-top:auto; padding-top:26px; border-top:1px solid var(--line-soft); position:relative;
+}
+.quote .q1{ font-weight:700; font-size:16.5px; letter-spacing:.07em; text-transform:uppercase; line-height:1.5; }
+.quote .q2{ margin-top:6px; font-weight:500; font-size:15px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--cream); line-height:1.55; }
+.rail .brandfoot{ margin-top:30px; display:flex; align-items:center; gap:14px; }
+.rail .brandfoot img{ height:64px; filter:drop-shadow(0 0 18px rgba(217,180,91,.35)); }
+.rail .brandfoot span{ font-weight:600; font-size:10.5px; letter-spacing:.26em;
+  text-transform:uppercase; color:var(--muted); line-height:1.8; }
+
+/* right: engine field */
+.field{ flex:1; position:relative; z-index:2; display:flex; flex-direction:column;
+  padding:44px 52px 20px 44px; min-width:0; }
+.engines{ flex:1; display:grid; grid-template-columns:1fr 1fr 1fr; grid-template-rows:1fr 1fr; gap:16px; min-height:0; }
+.eng{
+  position:relative; border-radius:18px; padding:24px 22px 18px; overflow:hidden;
+  border:1px solid transparent;
+  background:
+    linear-gradient(165deg, rgba(28,22,12,.78), rgba(13,10,7,.62)) padding-box,
+    linear-gradient(160deg, rgba(251,237,188,.4), rgba(227,190,100,.12) 35%, rgba(154,111,29,.3) 70%, rgba(251,237,188,.28)) border-box;
+  box-shadow:0 20px 44px -24px rgba(0,0,0,.9);
+  display:flex; flex-direction:column;
+}
+.eng::before{ content:''; position:absolute; inset:0 0 auto 0; height:2.5px;
+  background:linear-gradient(90deg,transparent 6%,rgba(251,237,188,.9) 35%,var(--gold) 55%,transparent 94%);
+  box-shadow:0 1px 16px rgba(227,190,100,.4); }
+/* giant editorial numeral */
+.eng .no{
+  position:absolute; top:-26px; right:6px; font-weight:700; font-size:124px; line-height:1;
+  color:transparent; -webkit-text-stroke:1.5px rgba(227,190,100,.34);
+  letter-spacing:-.02em; pointer-events:none;
+}
+.eng .no::selection{ background:none; }
+.eng .coin{ width:58px; height:58px; margin-bottom:14px; }
+.eng .coin svg{ width:28px; height:28px; }
+.eng h3{
+  font-weight:700; font-size:19.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--gold); text-shadow:0 0 16px rgba(227,190,100,.35); line-height:1.2;
+}
+.eng p{ margin-top:9px; font-weight:400; font-size:13.6px; line-height:1.5; color:var(--cream-dim); }
+.eng .tag{
+  margin-top:auto; padding-top:11px; border-top:1px solid var(--line-soft);
+  display:flex; align-items:center; gap:8px;
+  font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--cream);
+}
+.eng .tag svg{ width:15px; height:15px; color:var(--gold); flex:0 0 auto; }
+/* featured card (01) — inverted gold treatment */
+.eng.feat{
+  background:
+    linear-gradient(165deg, rgba(227,190,100,.13), rgba(154,111,29,.07) 45%, rgba(20,15,9,.88)) padding-box,
+    linear-gradient(160deg, #FBEDBC, rgba(227,190,100,.45) 40%, #9A6F1D 80%) border-box;
+  box-shadow:0 22px 50px -22px rgba(0,0,0,.95), 0 0 44px -6px rgba(227,190,100,.3);
+}
+.eng.feat .no{ -webkit-text-stroke:1.5px rgba(251,237,188,.5); }
+.eng.feat h3{ color:var(--gold-hi); }
+.eng.feat p{ color:var(--cream); }
+
+/* flywheel strip */
+.fly3{
+  flex:0 0 auto; margin-top:16px; display:flex; align-items:center; gap:20px;
+  border-radius:18px; padding:13px 18px;
+  border:1px solid transparent;
+  background:
+    linear-gradient(90deg, rgba(40,30,14,.9), rgba(20,15,9,.75) 55%, rgba(33,25,12,.85)) padding-box,
+    linear-gradient(120deg, rgba(251,237,188,.6), rgba(154,111,29,.4) 45%, rgba(251,237,188,.5)) border-box;
+  box-shadow:0 0 44px -10px rgba(227,190,100,.22);
+}
+.fly3 .lbl{ font-weight:700; font-size:13.5px; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+.fly3 .sep{ width:1px; align-self:stretch; background:linear-gradient(180deg,transparent,var(--line),transparent); }
+.fly3 .chain{ flex:1; display:flex; align-items:center; justify-content:space-between; gap:4px; min-width:0; }
+.fly3 .step{ display:flex; align-items:center; gap:6px; }
+.fly3 .step .coin{ width:34px; height:34px; } .fly3 .step .coin svg{ width:16px; height:16px; }
+.fly3 .step span{ font-weight:700; font-size:10.6px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); }
+.fly3 .arr{ color:var(--gold-deep); display:flex; } .fly3 .arr svg{ width:12px; height:12px; }
+.fieldfoot{ flex:0 0 auto; display:flex; align-items:center; padding:13px 4px 0; gap:20px; }
+.fieldfoot .l{ flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent); }
+.fieldfoot span{ font-weight:700; font-size:10.3px; white-space:nowrap; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); }
+.fieldfoot i{ font-style:normal; color:var(--gold-deep); padding:0 8px; }
+.fieldfoot .c{ font-weight:300; font-size:11px; color:var(--muted); }
+</style></head>
+<body><script src="icons.js"></script>
+<div class="stage">
+  <div class="lux"></div>
+  <svg class="wm left top" style="opacity:.05"><use href="#i-cycle"/></svg>
+
+  <!-- ============ LEFT RAIL ============ -->
+  <div class="rail">
+    <div class="eyebrow">Our Solution</div>
+    <div class="bigtitle">How<br>Are We<br><span class="gtx">Solving<br>This?</span></div>
+    <div class="kick">The IMAGINE Group AI ecosystem.<br><b>Educate. Implement. Create.<br>Scale. Impact.</b></div>
+    <div class="intro">We provide the education, strategies, technology, creative infrastructure,
+      and community to help individuals and organizations not just use AI&mdash;<b>but achieve
+      real impact with it.</b></div>
+    <div class="quote">
+      <div class="q1 gtx">We don’t just teach AI.</div>
+      <div class="q2">We build the ecosystem that helps people, businesses, and industries
+        adapt, create, scale, and thrive in the AI economy.</div>
+    </div>
+    <div class="brandfoot">
+      <img src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE Group AI">
+      <span>One Ecosystem<br>Five Engines<br>Endless Possibilities</span>
+    </div>
+  </div>
+
+  <!-- ============ RIGHT FIELD ============ -->
+  <div class="field">
+    <div class="engines">
+      <div class="eng feat">
+        <div class="no">01</div>
+        <div class="coin"><svg><use href="#i-grad"/></svg></div>
+        <h3>Learn AI</h3>
+        <p>Comprehensive AI education, training, industry certifications, and future accreditation that build in-demand skills.</p>
+        <div class="tag"><svg><use href="#i-users"/></svg>Education &amp; Talent Engine</div>
+      </div>
+      <div class="eng">
+        <div class="no">02</div>
+        <div class="coin"><svg><use href="#i-gear"/></svg></div>
+        <h3>Implement AI</h3>
+        <p>Guidance, frameworks, and implementation support that turn strategy into measurable business outcomes.</p>
+        <div class="tag"><svg><use href="#i-target"/></svg>Strategy &amp; Execution Engine</div>
+      </div>
+      <div class="eng">
+        <div class="no">03</div>
+        <div class="coin"><svg><use href="#i-film"/></svg></div>
+        <h3>Create With AI</h3>
+        <p>Studios, content, and IP that transform ideas into stories, experiences, and brands at scale.</p>
+        <div class="tag"><svg><use href="#i-palette"/></svg>Creative &amp; IP Engine</div>
+      </div>
+      <div class="eng">
+        <div class="no">04</div>
+        <div class="coin"><svg><use href="#i-chartup"/></svg></div>
+        <h3>Scale AI</h3>
+        <p>AI agents, automation, and software solutions that drive productivity, efficiency, and enterprise scale.</p>
+        <div class="tag"><svg><use href="#i-rocket"/></svg>Technology &amp; Scale Engine</div>
+      </div>
+      <div class="eng">
+        <div class="no">05</div>
+        <div class="coin"><svg><use href="#i-shieldcheck"/></svg></div>
+        <h3>Build Trust</h3>
+        <p>Establishing trusted certifications, ethical standards, governance, and responsible AI practices.</p>
+        <div class="tag"><svg><use href="#i-award"/></svg>Trust &amp; Standards Engine</div>
+      </div>
+      <div class="eng">
+        <div class="no">06</div>
+        <div class="coin"><svg><use href="#i-nodes"/></svg></div>
+        <h3>Connect &amp; Innovate</h3>
+        <p>Innovation hubs and communities where entrepreneurs, creators, students, and organizations build the future.</p>
+        <div class="tag"><svg><use href="#i-globe"/></svg>Community &amp; Innovation Engine</div>
+      </div>
+    </div>
+
+    <div class="fly3">
+      <div class="lbl gtx">The Imagine Flywheel</div>
+      <div class="sep"></div>
+      <div class="chain">
+        <div class="step"><div class="coin"><svg><use href="#i-grad"/></svg></div><span>Learn</span></div>
+        <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="step"><div class="coin"><svg><use href="#i-gear"/></svg></div><span>Implement</span></div>
+        <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="step"><div class="coin"><svg><use href="#i-film"/></svg></div><span>Create</span></div>
+        <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="step"><div class="coin"><svg><use href="#i-chartup"/></svg></div><span>Scale</span></div>
+        <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="step"><div class="coin"><svg><use href="#i-shieldcheck"/></svg></div><span>Trust</span></div>
+        <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="step"><div class="coin"><svg><use href="#i-nodes"/></svg></div><span>Connect</span></div>
+      </div>
+    </div>
+
+    <div class="fieldfoot">
+      <span>Education attracts talent<i>•</i>Innovation creates IP<i>•</i>Revenue funds impact</span>
+      <div class="l"></div>
+      <div class="c">© 2026 IMAGINE Group AI</div>
+    </div>
+  </div>
+</div>
+</body></html>
