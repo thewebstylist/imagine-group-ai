@@ -1,5 +1,5 @@
 /* ============================================================
-   IMAGINE GROUP AI — Pitch Deck Design System
+   IMAGINE GROUP AI — Pitch Deck Design System  v2 "Atelier"
    Palette + type per IMAGINE-group-Ai-brand-kit.jpg
    Canvas: 1536 x 1024
    ============================================================ */
@@ -25,6 +25,8 @@
   --line-soft: rgba(217,180,91,.15);
   --card:      rgba(244,227,169,.04);
   --card-deep: rgba(244,227,169,.07);
+  --metal:     linear-gradient(160deg, rgba(246,231,178,.55) 0%, rgba(217,180,91,.18) 28%,
+                rgba(140,99,23,.30) 55%, rgba(246,231,178,.40) 82%, rgba(140,99,23,.25) 100%);
 }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
@@ -37,13 +39,15 @@ html,body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ambient stage: vignette + warm gold atmosphere, echoes brand-kit dark panels */
+/* ---------- the stage: cinematic dark atmosphere ---------- */
 .stage{
   position:relative; width:1536px; height:1024px; overflow:hidden;
   background:
-    radial-gradient(1100px 420px at 78% -8%, rgba(217,180,91,.14), transparent 62%),
-    radial-gradient(900px 500px at 12% 112%, rgba(160,110,40,.10), transparent 60%),
-    radial-gradient(1600px 900px at 50% 50%, #131009 0%, #0B0907 68%, #070503 100%);
+    radial-gradient(1150px 460px at 76% -10%, rgba(217,180,91,.17), transparent 62%),
+    radial-gradient(820px 520px at 8% 114%, rgba(170,115,40,.13), transparent 62%),
+    radial-gradient(600px 300px at 96% 88%, rgba(217,180,91,.06), transparent 70%),
+    linear-gradient(115deg, transparent 42%, rgba(246,231,178,.028) 50%, transparent 58%),
+    radial-gradient(1700px 950px at 50% 46%, #141009 0%, #0B0907 66%, #060402 100%);
   display:flex; flex-direction:column;
 }
 .stage::after{ /* fine grain */
@@ -51,6 +55,36 @@ html,body{
   background-image:repeating-conic-gradient(rgba(255,240,200,.6) 0 .00028turn, transparent 0 .00056turn);
   mix-blend-mode:overlay;
 }
+
+/* luxury frame overlay: hairline border + gold corner ticks.
+   markup: <div class="lux"></div> as first child of .stage           */
+.lux{ position:absolute; inset:0; pointer-events:none; z-index:5; }
+.lux::before{
+  content:''; position:absolute; inset:13px;
+  border:1px solid rgba(217,180,91,.20); border-radius:3px;
+}
+.lux::after{
+  content:''; position:absolute; inset:13px;
+  background:
+    linear-gradient(var(--gold),var(--gold)) 0 0/26px 1.5px,
+    linear-gradient(var(--gold),var(--gold)) 0 0/1.5px 26px,
+    linear-gradient(var(--gold),var(--gold)) 100% 0/26px 1.5px,
+    linear-gradient(var(--gold),var(--gold)) 100% 0/1.5px 26px,
+    linear-gradient(var(--gold),var(--gold)) 0 100%/26px 1.5px,
+    linear-gradient(var(--gold),var(--gold)) 0 100%/1.5px 26px,
+    linear-gradient(var(--gold),var(--gold)) 100% 100%/26px 1.5px,
+    linear-gradient(var(--gold),var(--gold)) 100% 100%/1.5px 26px;
+  background-repeat:no-repeat;
+  filter:drop-shadow(0 0 6px rgba(217,180,91,.45));
+}
+
+/* per-slide ghost watermark icon — <svg class="wm"><use href="#i-…"/></svg> */
+.wm{ position:absolute; width:560px; height:560px; right:-90px; bottom:-120px;
+  color:var(--gold); opacity:.045; z-index:0; pointer-events:none;
+  filter:blur(.4px);
+}
+.wm.left{ right:auto; left:-110px; }
+.wm.top{ bottom:auto; top:-130px; }
 
 /* ---------- metallic gold text ---------- */
 .gtx{
@@ -61,53 +95,78 @@ html,body{
 /* ---------- header ---------- */
 header.slide{
   flex:0 0 auto; display:flex; align-items:center; gap:26px;
-  padding:30px 44px 18px 44px; position:relative; z-index:2;
-}
-.badge{
-  width:52px; height:52px; flex:0 0 auto; border:1.5px solid var(--gold);
-  border-radius:10px; display:flex; align-items:center; justify-content:center;
-  font-weight:500; font-size:26px; color:var(--gold);
-  box-shadow:0 0 22px rgba(217,180,91,.18), inset 0 0 14px rgba(217,180,91,.08);
+  padding:34px 52px 18px 52px; position:relative; z-index:2;
 }
 .titles{ flex:1 1 auto; min-width:0; }
-h1{
-  font-weight:600; font-size:46px; letter-spacing:.055em; text-transform:uppercase;
-  line-height:1.04; white-space:nowrap;
+.eyebrow{
+  display:flex; align-items:center; gap:14px; margin-bottom:10px;
+  font-weight:600; font-size:11.5px; letter-spacing:.42em; text-transform:uppercase;
+  color:var(--gold);
 }
+.eyebrow::before{ content:''; width:44px; height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  box-shadow:0 0 8px rgba(217,180,91,.6); }
+.eyebrow::after{ content:''; width:6px; height:6px; transform:rotate(45deg);
+  background:linear-gradient(135deg,#F6E7B2,#8C6317);
+  box-shadow:0 0 8px rgba(217,180,91,.7); }
+h1{
+  font-weight:600; font-size:50px; letter-spacing:.05em; text-transform:uppercase;
+  line-height:1.02; white-space:nowrap; color:var(--cream);
+}
+h1 .gtx{ font-weight:600; }
 .kicker{
-  margin-top:9px; font-weight:500; font-size:15.5px; letter-spacing:.24em;
+  margin-top:10px; font-weight:500; font-size:15.5px; letter-spacing:.24em;
   text-transform:uppercase; color:var(--cream-dim);
 }
 .kicker b{ color:var(--gold); font-weight:500; }
-.brandmark{ flex:0 0 auto; height:86px; display:flex; align-items:center; }
-.brandmark img{ height:86px; width:auto; display:block;
-  filter:drop-shadow(0 0 18px rgba(217,180,91,.25)); }
-.rule{ height:1px; margin:0 44px; flex:0 0 auto;
+.brandmark{ flex:0 0 auto; height:96px; display:flex; align-items:center; }
+.brandmark img{ height:96px; width:auto; display:block;
+  filter:drop-shadow(0 0 22px rgba(217,180,91,.32)); }
+.rule{ height:1px; margin:0 52px; flex:0 0 auto; position:relative; z-index:2;
   background:linear-gradient(90deg,var(--gold) 0%,rgba(217,180,91,.35) 55%,transparent 100%); }
+.rule::after{ content:''; position:absolute; left:0; top:-2px; width:120px; height:5px;
+  background:radial-gradient(60px 4px at 30% 50%, rgba(246,231,178,.55), transparent); }
 
 /* ---------- content shell ---------- */
-main{ flex:1 1 auto; position:relative; z-index:2; padding:20px 44px 12px; display:flex; flex-direction:column; gap:14px; min-height:0; }
+main{ flex:1 1 auto; position:relative; z-index:2; padding:20px 52px 12px; display:flex; flex-direction:column; gap:14px; min-height:0; }
 
-/* ---------- cards ---------- */
+/* ---------- cards: metallic gradient borders ---------- */
 .card{
-  background:var(--card); border:1px solid var(--line-soft); border-radius:14px;
+  border:1px solid transparent; border-radius:16px;
+  background:
+    linear-gradient(180deg, rgba(24,19,11,.72), rgba(15,12,8,.60)) padding-box,
+    linear-gradient(160deg, rgba(246,231,178,.28) 0%, rgba(217,180,91,.10) 30%,
+      rgba(140,99,23,.22) 60%, rgba(246,231,178,.20) 100%) border-box;
   position:relative; overflow:hidden;
+  box-shadow:0 18px 40px -22px rgba(0,0,0,.85);
 }
 .card::before{ content:''; position:absolute; inset:0 0 auto 0; height:1px;
-  background:linear-gradient(90deg,transparent,rgba(246,231,178,.28),transparent); }
-.card.gold{ border-color:var(--line); background:var(--card-deep); }
+  background:linear-gradient(90deg,transparent,rgba(246,231,178,.35),transparent); }
+.card.gold{
+  background:
+    linear-gradient(180deg, rgba(33,25,13,.82), rgba(17,13,8,.66)) padding-box,
+    linear-gradient(160deg, rgba(246,231,178,.55) 0%, rgba(217,180,91,.20) 35%,
+      rgba(140,99,23,.40) 65%, rgba(246,231,178,.40) 100%) border-box;
+  box-shadow:0 18px 44px -20px rgba(0,0,0,.9), 0 0 34px -8px rgba(217,180,91,.14);
+}
 
-/* icon coin */
+/* icon coin — metallic ring */
 .coin{
   width:54px; height:54px; border-radius:50%; flex:0 0 auto;
-  border:1.5px solid var(--gold); color:var(--gold);
+  border:1.5px solid transparent; color:var(--gold);
+  background:
+    radial-gradient(circle at 32% 28%, #1D1710, #0F0B06 70%) padding-box,
+    conic-gradient(from 210deg, #F6E7B2, #8C6317 22%, #E2BE62 42%, #6E4E12 60%, #F6E7B2 78%, #8C6317 100%) border-box;
   display:flex; align-items:center; justify-content:center;
-  box-shadow:0 0 18px rgba(217,180,91,.16), inset 0 0 12px rgba(217,180,91,.07);
+  box-shadow:0 0 20px rgba(217,180,91,.20), inset 0 0 14px rgba(217,180,91,.08);
 }
 .coin svg{ width:26px; height:26px; }
 .coin.sm{ width:42px; height:42px; } .coin.sm svg{ width:20px; height:20px; }
-.coin.copper{ border-color:var(--copper); color:var(--copper);
-  box-shadow:0 0 18px rgba(201,124,74,.16), inset 0 0 12px rgba(201,124,74,.08); }
+.coin.copper{ color:var(--copper);
+  background:
+    radial-gradient(circle at 32% 28%, #1D140D, #0F0906 70%) padding-box,
+    conic-gradient(from 210deg, #E8B48C, #7A4520 25%, #C97C4A 48%, #5E3316 66%, #E8B48C 84%, #7A4520 100%) border-box;
+  box-shadow:0 0 18px rgba(201,124,74,.18), inset 0 0 12px rgba(201,124,74,.08); }
 
 /* numbered chip */
 .numchip{
@@ -130,13 +189,15 @@ main{ flex:1 1 auto; position:relative; z-index:2; padding:20px 44px 12px; displ
   display:flex; align-items:center; justify-content:center; gap:8px;
   border:1px solid var(--line); border-radius:9px; padding:7px 10px;
   font-weight:600; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold);
-  background:rgba(217,180,91,.05);
+  background:linear-gradient(180deg, rgba(217,180,91,.10), rgba(217,180,91,.03));
 }
 .pill svg{ width:14px; height:14px; }
-.pill.dim{ color:var(--cream-dim); border-color:var(--line-soft); }
+.pill.dim{ color:var(--cream-dim); border-color:var(--line-soft);
+  background:rgba(244,227,169,.03); }
 
 /* ---------- flow arrows ---------- */
-.arrow{ color:var(--gold); display:flex; align-items:center; }
+.arrow{ color:var(--gold); display:flex; align-items:center;
+  filter:drop-shadow(0 0 4px rgba(217,180,91,.5)); }
 .arrow svg{ width:20px; height:20px; }
 
 /* ---------- section label with side rules ---------- */
@@ -150,19 +211,27 @@ main{ flex:1 1 auto; position:relative; z-index:2; padding:20px 44px 12px; displ
 
 /* ---------- banner (bottom statement) ---------- */
 .banner{
-  border:1px solid var(--line); border-radius:14px; background:var(--card-deep);
+  border:1px solid transparent; border-radius:16px;
+  background:
+    linear-gradient(90deg, rgba(37,28,14,.85), rgba(20,15,9,.7) 55%, rgba(30,23,12,.8)) padding-box,
+    linear-gradient(120deg, rgba(246,231,178,.5), rgba(140,99,23,.35) 45%, rgba(246,231,178,.45)) border-box;
   display:flex; align-items:center; gap:22px; padding:14px 26px;
+  box-shadow:0 0 40px -10px rgba(217,180,91,.16);
+  position:relative; overflow:hidden;
 }
-.banner .coin{ box-shadow:0 0 26px rgba(217,180,91,.22); }
+.banner::after{ content:''; position:absolute; top:0; bottom:0; width:210px; left:-60px;
+  background:linear-gradient(105deg, transparent, rgba(246,231,178,.06), transparent);
+  transform:skewX(-18deg); }
+.banner .coin{ box-shadow:0 0 26px rgba(217,180,91,.26); }
 .banner .t1{ font-weight:600; font-size:19px; letter-spacing:.09em; text-transform:uppercase; }
 .banner .t2{ font-weight:500; font-size:19px; letter-spacing:.09em; text-transform:uppercase; color:var(--cream); }
 
 /* ---------- footer ---------- */
 footer.slide{
   flex:0 0 auto; display:flex; align-items:center; gap:24px;
-  padding:12px 44px 16px; position:relative; z-index:2;
+  padding:12px 52px 20px; position:relative; z-index:2;
 }
-footer.slide::before{ content:''; position:absolute; left:44px; right:44px; top:0; height:1px;
+footer.slide::before{ content:''; position:absolute; left:52px; right:52px; top:0; height:1px;
   background:linear-gradient(90deg,transparent,var(--line),transparent); }
 .foot-tag{ font-weight:600; font-size:11.5px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); }
 .foot-tag i{ font-style:normal; color:var(--gold-deep); padding:0 10px; }
@@ -183,5 +252,6 @@ ul.b li{
   color:var(--cream-dim); line-height:1.42; margin-bottom:7px;
 }
 ul.b li::before{ content:''; position:absolute; left:0; top:8px; width:5px; height:5px;
-  border-radius:50%; background:var(--gold); box-shadow:0 0 6px rgba(217,180,91,.6); }
+  border-radius:50%; background:linear-gradient(135deg,#F6E7B2,#8C6317);
+  box-shadow:0 0 7px rgba(217,180,91,.7); }
 ul.b li b{ font-weight:500; color:var(--cream); }

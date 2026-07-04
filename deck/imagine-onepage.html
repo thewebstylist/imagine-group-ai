@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IMAGINE Group AI — AI-Powered Media. Limitless Impact.</title>
+<style>
+@font-face{font-family:'Montserrat';src:url('fonts/montserrat-200.ttf');font-weight:200}
+@font-face{font-family:'Montserrat';src:url('fonts/montserrat-300.ttf');font-weight:300}
+@font-face{font-family:'Montserrat';src:url('fonts/montserrat-400.ttf');font-weight:400}
+@font-face{font-family:'Montserrat';src:url('fonts/montserrat-500.ttf');font-weight:500}
+@font-face{font-family:'Montserrat';src:url('fonts/montserrat-600.ttf');font-weight:600}
+@font-face{font-family:'Montserrat';src:url('fonts/montserrat-700.ttf');font-weight:700}
+:root{
+  --bg:#0B0907; --cream:#F3ECDC; --cream-dim:#CBC0A8; --muted:#998E75;
+  --gold:#D9B45B; --gold-hi:#F6E7B2; --gold-deep:#8C6317; --copper:#C97C4A;
+  --line:rgba(217,180,91,.32); --line-soft:rgba(217,180,91,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'Montserrat',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:rgba(217,180,91,.35)}
+.gtx{background:linear-gradient(180deg,#F8ECC0 0%,#EBCB74 38%,#C79A33 66%,#8C6317 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- progress bar ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:1001;
+  background:linear-gradient(90deg,#8C6317,#F6E7B2,#D9B45B);
+  box-shadow:0 0 12px rgba(217,180,91,.7)}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;gap:28px;
+  padding:14px 4vw;background:rgba(9,7,5,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(217,180,91,.14);transition:padding .3s}
+nav.compact{padding:8px 4vw;background:rgba(9,7,5,.9)}
+nav .logo{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+nav .logo img{height:44px;filter:drop-shadow(0 0 10px rgba(217,180,91,.35));transition:height .3s}
+nav.compact .logo img{height:36px}
+nav a.lnk{position:relative;text-decoration:none;color:var(--cream-dim);font-weight:500;font-size:11.5px;
+  letter-spacing:.18em;text-transform:uppercase;padding:6px 2px;white-space:nowrap;transition:color .25s}
+nav a.lnk::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:1.5px;
+  background:linear-gradient(90deg,#F6E7B2,#8C6317);transition:right .3s ease;box-shadow:0 0 8px rgba(217,180,91,.6)}
+nav a.lnk:hover{color:var(--gold-hi)}
+nav a.lnk.active{color:var(--gold)}
+nav a.lnk.active::after{right:0}
+#burger{display:none}
+@media(max-width:1080px){
+  nav .menu{position:fixed;top:64px;right:0;background:rgba(9,7,5,.97);flex-direction:column;
+    padding:20px 32px;gap:16px;display:none;border-left:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  nav .menu.open{display:flex}
+  #burger{display:block;background:none;border:1px solid var(--line);border-radius:8px;color:var(--gold);
+    font-size:18px;padding:4px 12px;cursor:pointer}
+}
+nav .menu{display:flex;gap:26px;align-items:center}
+
+/* ---------- shared section chrome ---------- */
+section{position:relative;padding:110px 6vw 90px;max-width:1440px;margin:0 auto;scroll-margin-top:70px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-weight:600;font-size:12px;
+  letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.eyebrow::before{content:'';width:46px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);box-shadow:0 0 8px rgba(217,180,91,.6)}
+.eyebrow::after{content:'';width:6px;height:6px;transform:rotate(45deg);background:linear-gradient(135deg,#F6E7B2,#8C6317)}
+h2{font-weight:600;font-size:clamp(30px,4.4vw,52px);letter-spacing:.05em;text-transform:uppercase;line-height:1.05}
+.kick{margin-top:14px;font-weight:500;font-size:clamp(12px,1.35vw,16px);letter-spacing:.22em;text-transform:uppercase;color:var(--cream-dim)}
+.kick b{color:var(--gold);font-weight:500}
+.sechead{margin-bottom:46px}
+.card{border:1px solid transparent;border-radius:16px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(24,19,11,.72),rgba(15,12,8,.6)) padding-box,
+  linear-gradient(160deg,rgba(246,231,178,.28),rgba(217,180,91,.1) 30%,rgba(140,99,23,.22) 60%,rgba(246,231,178,.2)) border-box;
+  box-shadow:0 18px 40px -22px rgba(0,0,0,.85)}
+.card::before{content:'';position:absolute;inset:0 0 auto 0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(246,231,178,.35),transparent)}
+.card.gold{background:linear-gradient(180deg,rgba(33,25,13,.82),rgba(17,13,8,.66)) padding-box,
+  linear-gradient(160deg,rgba(246,231,178,.55),rgba(217,180,91,.2) 35%,rgba(140,99,23,.4) 65%,rgba(246,231,178,.4)) border-box;
+  box-shadow:0 18px 44px -20px rgba(0,0,0,.9),0 0 34px -8px rgba(217,180,91,.14)}
+.coin{width:54px;height:54px;border-radius:50%;flex:0 0 auto;border:1.5px solid transparent;color:var(--gold);
+  background:radial-gradient(circle at 32% 28%,#1D1710,#0F0B06 70%) padding-box,
+  conic-gradient(from 210deg,#F6E7B2,#8C6317 22%,#E2BE62 42%,#6E4E12 60%,#F6E7B2 78%,#8C6317 100%) border-box;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(217,180,91,.2)}
+.coin svg{width:26px;height:26px}
+.coin.copper{color:var(--copper);
+  background:radial-gradient(circle at 32% 28%,#1D140D,#0F0906 70%) padding-box,
+  conic-gradient(from 210deg,#E8B48C,#7A4520 25%,#C97C4A 48%,#5E3316 66%,#E8B48C 84%,#7A4520 100%) border-box}
+.ct{font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);line-height:1.35}
+.cs{font-weight:300;font-size:13.5px;color:var(--cream-dim);line-height:1.6}
+.cs b{font-weight:500;color:var(--cream)}
+ul.b{list-style:none}
+ul.b li{position:relative;padding-left:16px;font-weight:300;font-size:13.5px;color:var(--cream-dim);line-height:1.5;margin-bottom:8px}
+ul.b li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;
+  background:linear-gradient(135deg,#F6E7B2,#8C6317);box-shadow:0 0 7px rgba(217,180,91,.7)}
+ul.b li b{font-weight:500;color:var(--cream)}
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+
+/* ---------- reveal animations ---------- */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+.rv.d4{transition-delay:.4s}.rv.d5{transition-delay:.5s}.rv.d6{transition-delay:.6s}
+
+/* ---------- hero ---------- */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding-top:130px;max-width:none;overflow:hidden}
+#hero .orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;opacity:.55}
+#hero .o1{width:520px;height:520px;left:-140px;top:8%;background:radial-gradient(circle,rgba(217,180,91,.16),transparent 65%);animation:float1 11s ease-in-out infinite}
+#hero .o2{width:640px;height:640px;right:-190px;bottom:-4%;background:radial-gradient(circle,rgba(170,115,40,.14),transparent 65%);animation:float2 14s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(48px,-34px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-44px,30px)}}
+#hero img.mark{height:clamp(150px,23vh,230px);filter:drop-shadow(0 0 40px rgba(217,180,91,.4));
+  animation:breathe 5.5s ease-in-out infinite}
+@keyframes breathe{0%,100%{filter:drop-shadow(0 0 26px rgba(217,180,91,.3))}50%{filter:drop-shadow(0 0 52px rgba(217,180,91,.55))}}
+#hero h1{margin-top:42px;font-weight:600;font-size:clamp(30px,5.4vw,64px);letter-spacing:.08em;text-transform:uppercase;line-height:1.12}
+#hero h1 .shine{position:relative;display:inline-block;
+  background:linear-gradient(110deg,#8C6317 0%,#F6E7B2 28%,#D9B45B 42%,#F8ECC0 50%,#D9B45B 58%,#8C6317 100%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:sheen 5.5s linear infinite}
+@keyframes sheen{0%{background-position:120% 0}100%{background-position:-120% 0}}
+#hero .tag{margin-top:22px;font-weight:500;font-size:clamp(12px,1.6vw,17px);letter-spacing:.34em;text-transform:uppercase;color:var(--cream-dim)}
+#hero .trio{margin-top:34px;display:flex;gap:26px;flex-wrap:wrap;justify-content:center;
+  font-weight:600;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+#hero .trio i{font-style:normal;color:var(--gold-deep)}
+#hero .cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:9px;
+  color:var(--gold);font-size:10px;letter-spacing:.34em;text-transform:uppercase;font-weight:600;text-decoration:none}
+#hero .cue .mouse{width:24px;height:40px;border:1.5px solid var(--gold);border-radius:14px;position:relative;opacity:.85}
+#hero .cue .mouse::after{content:'';position:absolute;left:50%;top:7px;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;
+  background:var(--gold);animation:drip 1.8s ease-in-out infinite}
+@keyframes drip{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(13px)}}
+
+/* ---------- problem section ---------- */
+.statband{display:flex;flex-wrap:wrap;align-items:center;gap:26px;padding:26px 30px;margin-bottom:26px}
+.statband .big{font-weight:600;font-size:17px;letter-spacing:.05em;line-height:1.5}
+.statband .txt{font-weight:300;font-size:14.5px;color:var(--cream-dim);line-height:1.55;max-width:330px}
+.statband .txt b{color:var(--gold);font-weight:600}
+.n70{font-weight:600;font-size:52px;line-height:1}
+.n70cap{font-weight:500;font-size:10.5px;letter-spacing:.12em;color:var(--cream-dim);max-width:180px;line-height:1.5;margin-top:6px}
+.probcard{padding:26px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.probcard .ct{color:var(--cream);font-size:14px}
+.numchip{width:26px;height:26px;border-radius:50%;border:1px solid var(--copper);color:var(--copper);
+  font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.bannerX{display:flex;align-items:center;gap:22px;padding:22px 30px;margin-top:26px}
+.bannerX .t1{font-weight:600;font-size:clamp(15px,1.9vw,20px);letter-spacing:.08em;text-transform:uppercase}
+.bannerX .t2{font-weight:500;font-size:clamp(14px,1.8vw,19px);letter-spacing:.08em;text-transform:uppercase;color:var(--cream)}
+.srcnote{margin-top:14px;font-weight:300;font-size:11px;color:var(--muted)}
+
+/* ---------- engines ---------- */
+.engcard{padding:26px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.etag{margin-top:auto;width:100%;padding-top:12px;border-top:1px solid var(--line-soft);display:flex;align-items:center;justify-content:center;gap:8px;
+  font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.etag svg{width:15px;height:15px}
+.flyband{display:flex;flex-wrap:wrap;align-items:center;gap:26px;padding:26px 30px;margin-top:26px}
+.flyband .lbl{font-weight:600;font-size:18px;letter-spacing:.12em;text-transform:uppercase}
+.flyband .bd{font-weight:300;font-size:13px;color:var(--cream-dim);line-height:1.6;max-width:340px}
+.chain{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;flex:1}
+.chain .step{display:flex;flex-direction:column;align-items:center;gap:7px;min-width:76px}
+.chain .step span{font-weight:600;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
+.chain .arr{color:var(--gold);filter:drop-shadow(0 0 4px rgba(217,180,91,.5))}
+.chain .arr svg{width:18px;height:18px}
+.coin.sm{width:44px;height:44px}.coin.sm svg{width:20px;height:20px}
+
+/* ---------- advantage ---------- */
+.ipcard{padding:24px 22px;display:flex;flex-direction:column;gap:12px}
+.hd{display:flex;align-items:center;gap:12px}
+.hd .coin{width:44px;height:44px}.hd .coin svg{width:20px;height:20px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:9px;padding:7px 12px;margin-top:auto;align-self:flex-start;
+  font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+  background:linear-gradient(180deg,rgba(217,180,91,.1),rgba(217,180,91,.03))}
+.pill.dim{color:var(--cream-dim);border-color:var(--line-soft)}
+.pill svg{width:14px;height:14px}
+.stripgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin-top:26px}
+.stripit{display:flex;align-items:center;gap:12px;padding:16px 18px}
+.stripit .tt{font-weight:600;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold)}
+.stripit .bb{font-weight:300;font-size:10.6px;color:var(--cream-dim);line-height:1.4;margin-top:3px}
+.stripit .coin{width:38px;height:38px}.stripit .coin svg{width:18px;height:18px}
+
+/* ---------- team ---------- */
+.member{display:flex;flex-direction:column;overflow:hidden}
+.member .photo{position:relative;height:400px;overflow:hidden}
+.member .photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
+  transform:scale(1.02);transition:transform .8s ease}
+.member:hover .photo img{transform:scale(1.07)}
+.member .photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,9,7,0) 60%,rgba(11,9,7,.94) 100%)}
+.member .info{padding:20px 24px 24px;display:flex;flex-direction:column;gap:9px;flex:1}
+.mname{font-weight:600;font-size:21px;letter-spacing:.11em;text-transform:uppercase}
+.mrole{font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream)}
+.mdiv{width:52px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.mbio{font-weight:300;font-size:13px;color:var(--cream-dim);line-height:1.6}
+
+/* ---------- market ---------- */
+.compname{font-weight:700;font-size:17px;letter-spacing:.05em}
+.compname small{font-weight:300;font-size:10px;color:var(--muted);margin-left:8px;letter-spacing:.06em}
+.compfocus{font-weight:500;font-size:11.5px;letter-spacing:.05em;color:var(--gold);margin:4px 0}
+.eit{display:flex;align-items:flex-start;gap:10px}
+.eit svg{width:17px;height:17px;color:var(--gold);flex:0 0 auto;margin-top:1px}
+.eit b{display:block;font-weight:600;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold)}
+.eit i{font-style:normal;font-weight:300;font-size:11px;color:var(--cream-dim);line-height:1.4}
+
+/* ---------- economics ---------- */
+.counters{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-bottom:34px}
+.counter{padding:24px 20px;text-align:center}
+.counter .val{font-weight:600;font-size:clamp(30px,3.4vw,44px);line-height:1}
+.counter .cap{margin-top:9px;font-weight:500;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim)}
+.bars{display:flex;align-items:flex-end;justify-content:center;gap:clamp(10px,2.4vw,30px);height:300px;padding-top:10px}
+.bar{display:flex;flex-direction:column;align-items:center;gap:7px;justify-content:flex-end;height:100%}
+.bar .v{font-weight:600;font-size:12px}
+.bar .col{width:clamp(30px,3.4vw,46px);border-radius:6px 6px 2px 2px;height:0;
+  background:linear-gradient(180deg,#F6E7B2,#D9B45B 30%,#8C6317 100%);box-shadow:0 0 16px rgba(217,180,91,.3);
+  transition:height 1.4s cubic-bezier(.2,.7,.2,1)}
+.bar .y{font-weight:400;font-size:11px;color:var(--muted)}
+.donutwrap{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap}
+.donut{position:relative;width:230px;height:230px;flex:0 0 auto}
+.donut .ring{position:absolute;inset:0;border-radius:50%;box-shadow:0 0 30px rgba(217,180,91,.2)}
+.donut .hole{position:absolute;inset:52px;border-radius:50%;background:#0F0C08;display:flex;align-items:center;justify-content:center;border:1px solid var(--line-soft)}
+.donut .hole img{width:74px}
+.leg{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.leg .sw{width:12px;height:12px;border-radius:3px;margin-top:3px;flex:0 0 auto}
+.leg b{font-weight:600;font-size:15px}
+.leg i{font-style:normal;display:block;font-weight:300;font-size:11.5px;color:var(--cream-dim)}
+.mets{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.met{padding:16px 18px}
+.met .k{font-weight:600;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.met .v{font-weight:600;font-size:21px;color:var(--gold);margin-top:3px}
+.met .v small{font-weight:400;font-size:10.5px;color:var(--cream-dim);margin-left:7px;letter-spacing:.05em}
+
+/* ---------- purpose / footer ---------- */
+#purpose{max-width:none;background:
+  radial-gradient(900px 380px at 50% 0%,rgba(217,180,91,.09),transparent 65%)}
+#purpose .inner{max-width:980px;margin:0 auto;text-align:center}
+#purpose img{height:120px;filter:drop-shadow(0 0 26px rgba(217,180,91,.35));margin-bottom:30px}
+#purpose .q{font-weight:300;font-size:clamp(17px,2.4vw,26px);line-height:1.65;color:var(--cream-dim)}
+#purpose .q b{font-weight:500;color:var(--cream)}
+footer{border-top:1px solid var(--line-soft);padding:26px 6vw;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+footer .t{font-weight:600;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+footer .t i{font-style:normal;color:var(--gold-deep);padding:0 10px}
+footer .c{font-weight:300;font-size:11.5px;color:var(--muted)}
+.secdiv{height:1px;max-width:1440px;margin:0 auto;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style></head>
+<body>
+<script src="icons.js"></script>
+<div id="progress"></div>
+
+<nav id="nav">
+  <a class="logo" href="#hero"><img src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE Group AI"></a>
+  <button id="burger" aria-label="menu">☰</button>
+  <div class="menu" id="menu">
+    <a class="lnk" href="#problem">The Gap</a>
+    <a class="lnk" href="#solution">Solution</a>
+    <a class="lnk" href="#advantage">Advantage</a>
+    <a class="lnk" href="#gtm">Go-To-Market</a>
+    <a class="lnk" href="#team">Team</a>
+    <a class="lnk" href="#market">Market</a>
+    <a class="lnk" href="#economics">Economics</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <img class="mark rv in" src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE Group AI">
+  <h1 class="rv in d1">AI-Powered Media.<br><span class="shine">Limitless Impact.</span></h1>
+  <div class="tag rv in d2">The complete AI adoption ecosystem</div>
+  <div class="trio rv in d3"><span>One Ecosystem</span><i>◆</i><span>Five Engines</span><i>◆</i><span>Endless Possibilities</span></div>
+  <a class="cue" href="#problem"><div class="mouse"></div>Scroll</a>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section id="problem">
+  <div class="sechead rv">
+    <div class="eyebrow">The Opportunity &amp; The Gap</div>
+    <h2>What Are We <span class="gtx">Solving?</span></h2>
+    <div class="kick">The AI revolution has created a <b>human adoption gap.</b></div>
+  </div>
+  <div class="card gold statband rv">
+    <div class="coin"><svg><use href="#i-globe"/></svg></div>
+    <div class="big"><span class="gtx">AI WILL ADD $15.7 TRILLION</span><br>TO THE GLOBAL ECONOMY BY 2030*</div>
+    <div class="txt">Yet <b>70%</b> of organizations struggle to move beyond experimentation to meaningful, measurable impact.</div>
+    <div style="margin-left:auto;text-align:left">
+      <div class="n70 gtx"><span class="cnt" data-to="70">0</span>%</div>
+      <div class="n70cap">OF ORGANIZATIONS STRUGGLE TO MOVE BEYOND EXPERIMENTATION</div>
+    </div>
+  </div>
+  <div class="grid g3">
+    <div class="card probcard rv"><div class="coin copper"><svg><use href="#i-gauge"/></svg></div><div class="numchip">1</div>
+      <div class="ct">AI is advancing faster than people can adapt.</div>
+      <div class="cs">Skills gaps are growing across every industry and role.</div></div>
+    <div class="card probcard rv d1"><div class="coin copper"><svg><use href="#i-puzzle"/></svg></div><div class="numchip">2</div>
+      <div class="ct">Fragmented tools, training, and solutions.</div>
+      <div class="cs">Thousands of tools and courses, but no unified path or proven implementation framework.</div></div>
+    <div class="card probcard rv d2"><div class="coin copper"><svg><use href="#i-help"/></svg></div><div class="numchip">3</div>
+      <div class="ct">No trusted standards or certifications.</div>
+      <div class="cs">Employers and organizations lack confidence in skills, credentials, and AI readiness.</div></div>
+    <div class="card probcard rv"><div class="coin copper"><svg><use href="#i-bank"/></svg></div><div class="numchip">4</div>
+      <div class="ct">Complexity in implementation.</div>
+      <div class="cs">Strategy, governance, security, data, change management, and ROI are major barriers to adoption.</div></div>
+    <div class="card probcard rv d1"><div class="coin copper"><svg><use href="#i-users"/></svg></div><div class="numchip">5</div>
+      <div class="ct">Isolation, not community.</div>
+      <div class="cs">Entrepreneurs, creators, and professionals need places to learn, collaborate, and innovate together.</div></div>
+    <div class="card probcard rv d2"><div class="coin copper"><svg><use href="#i-chartdown"/></svg></div><div class="numchip">6</div>
+      <div class="ct">The result: lost productivity, wasted investment, missed opportunities.</div>
+      <div class="cs">Widening inequality and slow adaptation in a fast-moving world.</div></div>
+  </div>
+  <div class="card gold bannerX rv">
+    <div class="coin"><svg><use href="#i-trophy"/></svg></div>
+    <div><div class="t1 gtx">The world doesn’t need more AI tools.</div>
+      <div class="t2">It needs a trusted ecosystem to adapt, create, and thrive.</div></div>
+  </div>
+  <div class="srcnote">* Source: PwC, Goldman Sachs, McKinsey, HolonIQ</div>
+</section>
+<div class="secdiv"></div>
+
+<!-- ============ SOLUTION ============ -->
+<section id="solution">
+  <div class="sechead rv">
+    <div class="eyebrow">Our Solution</div>
+    <h2>How Are We <span class="gtx">Solving This?</span></h2>
+    <div class="kick">The IMAGINE Group AI ecosystem. <b>Educate. Implement. Create. Scale. Impact.</b></div>
+  </div>
+  <div class="card gold statband rv" style="margin-bottom:26px">
+    <div class="coin"><svg><use href="#i-users"/></svg></div>
+    <div class="cs" style="font-size:15.5px;max-width:1000px">We provide the education, strategies, technology, creative infrastructure, and community
+      to help individuals and organizations not just use AI&mdash;<b style="color:var(--gold)">but achieve real impact with it.</b></div>
+  </div>
+  <div class="grid g3">
+    <div class="card engcard rv"><div class="coin"><svg><use href="#i-grad"/></svg></div>
+      <div class="ct">Learn AI</div>
+      <div class="cs">Comprehensive AI education, training, industry certifications, and future accreditation that build in-demand skills.</div>
+      <div class="etag"><svg><use href="#i-users"/></svg>Education &amp; Talent Engine</div></div>
+    <div class="card engcard rv d1"><div class="coin"><svg><use href="#i-gear"/></svg></div>
+      <div class="ct">Implement AI</div>
+      <div class="cs">Guidance, frameworks, and implementation support that turn strategy into measurable business outcomes.</div>
+      <div class="etag"><svg><use href="#i-target"/></svg>Strategy &amp; Execution Engine</div></div>
+    <div class="card engcard rv d2"><div class="coin"><svg><use href="#i-film"/></svg></div>
+      <div class="ct">Create With AI</div>
+      <div class="cs">Studios, content, and IP that transform ideas into stories, experiences, and brands at scale.</div>
+      <div class="etag"><svg><use href="#i-palette"/></svg>Creative &amp; IP Engine</div></div>
+    <div class="card engcard rv"><div class="coin"><svg><use href="#i-chartup"/></svg></div>
+      <div class="ct">Scale AI</div>
+      <div class="cs">AI agents, automation, and software solutions that drive productivity, efficiency, and enterprise scale.</div>
+      <div class="etag"><svg><use href="#i-rocket"/></svg>Technology &amp; Scale Engine</div></div>
+    <div class="card engcard rv d1"><div class="coin"><svg><use href="#i-shieldcheck"/></svg></div>
+      <div class="ct">Build Trust</div>
+      <div class="cs">Establishing trusted certifications, ethical standards, governance, and responsible AI practices.</div>
+      <div class="etag"><svg><use href="#i-award"/></svg>Trust &amp; Standards Engine</div></div>
+    <div class="card engcard rv d2"><div class="coin"><svg><use href="#i-nodes"/></svg></div>
+      <div class="ct">Connect &amp; Innovate</div>
+      <div class="cs">Innovation hubs and communities where entrepreneurs, creators, students, and organizations build the future.</div>
+      <div class="etag"><svg><use href="#i-globe"/></svg>Community &amp; Innovation Engine</div></div>
+  </div>
+  <div class="card flyband rv">
+    <div class="coin"><svg><use href="#i-cycle"/></svg></div>
+    <div><div class="lbl gtx">The IMAGINE Flywheel</div>
+      <div class="bd">Education attracts talent. Innovation creates IP. IP drives revenue. Revenue funds impact. Impact fuels the next generation.</div></div>
+    <div class="chain">
+      <div class="step"><div class="coin sm"><svg><use href="#i-grad"/></svg></div><span>Learn</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-gear"/></svg></div><span>Implement</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-film"/></svg></div><span>Create</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-chartup"/></svg></div><span>Scale</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-shieldcheck"/></svg></div><span>Trust</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-nodes"/></svg></div><span>Connect</span></div>
+    </div>
+  </div>
+  <div class="card gold bannerX rv">
+    <div class="coin"><svg><use href="#i-trophy"/></svg></div>
+    <div><div class="t1 gtx" style="font-size:clamp(13px,1.6vw,17px)">We don’t just teach AI. We build the ecosystem that helps people, businesses, and industries</div>
+      <div class="t2">Adapt, create, scale, and thrive in the AI economy.</div></div>
+  </div>
+</section>
+<div class="secdiv"></div>
+
+<!-- ============ ADVANTAGE ============ -->
+<section id="advantage">
+  <div class="sechead rv">
+    <div class="eyebrow">Intellectual Property &amp; Innovation</div>
+    <h2>Our <span class="gtx">Proprietary Advantage</span></h2>
+    <div class="kick">The intellectual property platform behind IMAGINE Group &mdash; <b>a defensible ecosystem that educates, implements, creates, scales, and connects.</b></div>
+  </div>
+  <div class="grid g2">
+    <div class="card ipcard rv">
+      <div class="hd"><div class="coin"><svg><use href="#i-grad"/></svg></div><div class="ct">Proprietary Education &amp; Certification</div></div>
+      <ul class="b"><li><b>Hart Academy AI&trade;</b> curriculum framework</li><li>Industry AI certification pathways</li>
+        <li>Executive AI education programs</li><li>Future accreditation framework</li><li>Proprietary learning methodologies</li></ul>
+      <div class="pill"><svg><use href="#i-shieldcheck"/></svg>Current Assets</div>
+    </div>
+    <div class="card ipcard rv d1">
+      <div class="hd"><div class="coin"><svg><use href="#i-gear"/></svg></div><div class="ct">Proprietary Technology</div></div>
+      <ul class="b"><li><b>Creative Intelligence&trade;</b> (Our Proprietary Methodology)</li><li>AI Agents</li><li>Industry-specific AI copilots</li>
+        <li>Plug-and-play AI business solutions</li><li>SaaS platform architecture</li><li>MCP-enabled integrations (Planned)</li></ul>
+      <div class="pill dim"><svg><use href="#i-rocket"/></svg>In Development</div>
+    </div>
+    <div class="card ipcard rv">
+      <div class="hd"><div class="coin"><svg><use href="#i-globe"/></svg></div><div class="ct">Industry AI&trade; Solutions</div></div>
+      <div class="cs">Plug-and-play AI solutions for rapid deployment across industries including:</div>
+      <ul class="b" style="columns:2;column-gap:26px"><li>Education</li><li>Real Estate</li><li>Travel &amp; Hospitality</li><li>Government</li>
+        <li>Healthcare</li><li>Small Business</li><li>Financial Services</li><li>Enterprise</li></ul>
+      <div class="pill dim"><svg><use href="#i-rocket"/></svg>In Development</div>
+    </div>
+    <div class="card ipcard rv d1">
+      <div class="hd"><div class="coin"><svg><use href="#i-star"/></svg></div><div class="ct">Proprietary Brands &amp; Intellectual Property</div></div>
+      <ul class="b" style="columns:2;column-gap:26px"><li>Imagine Group&trade;</li><li>Hart Academy AI&trade;</li><li>Imagine Labs&trade;</li>
+        <li>Imagine Studios&trade;</li><li>Creative Intelligence&trade;</li><li>My Buddy&trade; (AI Educational Companion)</li>
+        <li>Proprietary curriculum library</li><li>Digital content library</li><li>Brand architecture</li><li>Certification systems</li>
+        <li>Trademarks &amp; brand portfolio</li></ul>
+      <div class="pill"><svg><use href="#i-shieldcheck"/></svg>Current Assets</div>
+    </div>
+    <div class="card ipcard rv">
+      <div class="hd"><div class="coin"><svg><use href="#i-robot"/></svg></div>
+        <div><div class="ct" style="color:var(--cream)">Product Innovation</div><div class="ct" style="margin-top:3px">My Buddy&trade;</div></div></div>
+      <div class="cs">An AI-powered educational companion designed for children ages 5&ndash;8 that combines conversational AI, storytelling,
+        personalized learning, and creative exploration to build foundational AI literacy and lifelong curiosity.</div>
+      <div class="pill dim"><svg><use href="#i-rocket"/></svg>In Development</div>
+    </div>
+    <div class="card ipcard rv d1">
+      <div class="hd"><div class="coin"><svg><use href="#i-play"/></svg></div>
+        <div><div class="ct">Demonstration</div><div class="cs" style="margin-top:3px">Prototype Roadmap</div></div></div>
+      <ul class="b"><li>AI Companion Experience</li><li>Industry AI Copilot</li><li>Certification Platform</li>
+        <li>AI Learning Portal</li><li>Plug-and-Play Business Dashboard</li></ul>
+      <div class="cs" style="color:var(--gold);font-weight:500">Live demonstrations available during product rollout.</div>
+    </div>
+  </div>
+  <div class="stripgrid">
+    <div class="card stripit rv"><div class="coin"><svg><use href="#i-shieldlock"/></svg></div>
+      <div class="tt gtx" style="font-size:13px">Built to defend.<br>Designed to scale.</div></div>
+    <div class="card stripit rv d1"><div class="coin"><svg><use href="#i-lock"/></svg></div>
+      <div><div class="tt">Proprietary IP</div><div class="bb">Trademarks, curriculum, frameworks, and technology create lasting defensibility.</div></div></div>
+    <div class="card stripit rv d2"><div class="coin"><svg><use href="#i-nodes"/></svg></div>
+      <div><div class="tt">Ecosystem Moat</div><div class="bb">Integrated engines create network effects and compounding value.</div></div></div>
+    <div class="card stripit rv d3"><div class="coin"><svg><use href="#i-dollar"/></svg></div>
+      <div><div class="tt">Multiple Revenue Engines</div><div class="bb">Education, software, certification, solutions, and communities drive recurring revenue.</div></div></div>
+    <div class="card stripit rv d4"><div class="coin"><svg><use href="#i-rocket"/></svg></div>
+      <div><div class="tt">Future-Ready</div><div class="bb">Constant innovation and expanding IP portfolio future-proof the business.</div></div></div>
+  </div>
+</section>
+<div class="secdiv"></div>
+
+<!-- ============ GO-TO-MARKET ============ -->
+<section id="gtm">
+  <div class="sechead rv">
+    <div class="eyebrow">Growth Strategy</div>
+    <h2><span class="gtx">Go-To-Market</span> Strategy</h2>
+    <div class="kick"><b>Building the category.</b> Not just buying customers.</div>
+  </div>
+  <div class="grid g3">
+    <div class="card ipcard rv">
+      <div class="hd"><div class="coin"><svg><use href="#i-handshake"/></svg></div><div class="ct">1. Strategic Partnerships</div></div>
+      <ul class="b"><li>Universities &amp; Higher Education</li><li>Private Schools &amp; Training Organizations</li><li>Enterprise &amp; Corporate Learning</li>
+        <li>Workforce &amp; Economic Development Partners</li><li>Technology Companies</li><li>Industry Associations</li></ul>
+      <div class="etag"><svg><use href="#i-bank"/></svg>Strong partnerships accelerate scale.</div>
+    </div>
+    <div class="card ipcard rv d1">
+      <div class="hd"><div class="coin"><svg><use href="#i-nodes"/></svg></div><div class="ct">2. Ecosystem Growth Engine</div></div>
+      <ul class="b"><li>Hart Academy AI&trade;</li><li>Imagine Labs&trade;</li><li>Imagine Studios&trade;</li><li>Creative Intelligence&trade;</li>
+        <li>Community, Referrals &amp; Recurring Revenue</li>
+        <li><b>Every customer can become:</b> student, creator, entrepreneur, partner, enterprise client, certified professional.</li></ul>
+      <div class="etag">One ecosystem. Endless paths.</div>
+    </div>
+    <div class="card ipcard rv d2">
+      <div class="hd"><div class="coin"><svg><use href="#i-target"/></svg></div><div class="ct">3. Sales Channels</div></div>
+      <ul class="b"><li>Enterprise AI Transformation</li><li>Executive Education</li><li>Professional Certifications</li>
+        <li>AI Industry Solutions</li><li>SaaS &amp; AI Agents</li><li>Licensing &amp; White Label Programs</li></ul>
+      <div class="etag"><svg><use href="#i-chartup"/></svg>Multiple channels. Maximum impact.</div>
+    </div>
+    <div class="card ipcard rv">
+      <div class="hd"><div class="coin"><svg><use href="#i-star"/></svg></div><div class="ct">4. Brand &amp; Community Strategy</div></div>
+      <ul class="b" style="columns:2;column-gap:24px"><li>Thought Leadership</li><li>Keynote Speaking</li><li>AI Summits &amp; Events</li>
+        <li>Podcast &amp; Media Network</li><li>Creator Community</li><li>AI Innovation Challenges</li><li>University AI Labs</li>
+        <li>Strategic Industry Partnerships</li></ul>
+      <div class="etag"><svg><use href="#i-users"/></svg>Build the brand. Build the movement.</div>
+    </div>
+    <div class="card ipcard rv d1">
+      <div class="hd"><div class="coin"><svg><use href="#i-chartup"/></svg></div><div class="ct">5. Digital Growth Engine</div></div>
+      <ul class="b" style="columns:2;column-gap:24px"><li>Content Ecosystem</li><li>AI Demonstrations</li><li>Educational Media</li><li>Case Studies</li>
+        <li>YouTube &amp; Social</li><li>Community Platform</li><li>Email &amp; Nurture Funnels</li><li>SEO &amp; Organic Growth</li></ul>
+      <div class="etag"><svg><use href="#i-globe"/></svg>Content that educates. Converts. Compounds.</div>
+    </div>
+    <div class="card ipcard gold rv d2">
+      <div class="hd"><div class="coin"><svg><use href="#i-nodes"/></svg></div><div class="ct gtx" style="font-size:17px">The Network Effect</div></div>
+      <div class="cs">Every graduate, creator, enterprise client, university partner, and AI solution deployed
+        <b style="color:var(--gold)">expands the ecosystem</b>&mdash;creating referrals, recurring revenue, new intellectual property, and additional partnership opportunities.</div>
+    </div>
+  </div>
+  <div class="card gold flyband rv">
+    <div><div class="lbl gtx">One customer.</div>
+      <div class="bd" style="letter-spacing:.12em;text-transform:uppercase;font-weight:400">Multiple revenue opportunities.</div></div>
+    <div class="chain">
+      <div class="step"><div class="coin sm"><svg><use href="#i-grad"/></svg></div><span>Student</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-award"/></svg></div><span>Certification</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-coffee"/></svg></div><span>Labs</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-clapper"/></svg></div><span>Studios</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-code"/></svg></div><span>Software</span></div>
+      <div class="arr"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><div class="coin sm"><svg><use href="#i-building"/></svg></div><span>Enterprise</span></div>
+    </div>
+    <div class="bd" style="width:100%;text-align:center;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);font-weight:500">Recurring value at every stage</div>
+  </div>
+</section>
+<div class="secdiv"></div>
+
+<!-- ============ TEAM ============ -->
+<section id="team">
+  <div class="sechead rv">
+    <div class="eyebrow">Leadership</div>
+    <h2>The <span class="gtx">Team</span></h2>
+    <div class="kick">The people behind the ecosystem. <b>Human creativity, amplified by AI.</b></div>
+  </div>
+  <div class="grid g3">
+    <div class="card member rv">
+      <div class="photo"><img src="../IMAGINE-Group-Ai-christina-hart.jpg" alt="Christina Hart"></div>
+      <div class="info">
+        <div class="mname gtx">Christina Hart</div>
+        <div class="mrole">Co-Founder &amp; Chief Education Officer</div>
+        <div class="mdiv"></div>
+        <div class="mbio">Architect of the Hart Academy AI&trade; curriculum&mdash;building the education, certification, and talent engine
+          that turns AI skills into in-demand careers across every industry.</div>
+        <div class="etag" style="justify-content:flex-start"><svg><use href="#i-grad"/></svg>Education &amp; Talent Engine</div>
+      </div>
+    </div>
+    <div class="card member rv d1">
+      <div class="photo"><img src="../IMAGINE Group Ai Team sterling-williams.png" alt="Sterling Williams"></div>
+      <div class="info">
+        <div class="mname gtx">Sterling Williams</div>
+        <div class="mrole">Co-Founder &amp; Chief Executive Officer</div>
+        <div class="mdiv"></div>
+        <div class="mbio">Creative director and brand technologist leading the IMAGINE vision&mdash;uniting media, design, and artificial
+          intelligence into one connected ecosystem that moves people and elevates brands.</div>
+        <div class="etag" style="justify-content:flex-start"><svg><use href="#i-film"/></svg>Creative &amp; IP Engine</div>
+      </div>
+    </div>
+    <div class="card member rv d2">
+      <div class="photo"><img src="../Joh-Reinguard-linkedin-profile-pic-blk-blazer.jpg" alt="John Reighard"></div>
+      <div class="info">
+        <div class="mname gtx">John Reighard</div>
+        <div class="mrole">Co-Founder &amp; Chief Strategy Officer</div>
+        <div class="mdiv"></div>
+        <div class="mbio">Veteran executive leading enterprise partnerships, go-to-market execution, and scalable growth&mdash;turning
+          the IMAGINE ecosystem into measurable business outcomes worldwide.</div>
+        <div class="etag" style="justify-content:flex-start"><svg><use href="#i-target"/></svg>Strategy &amp; Execution Engine</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="secdiv"></div>
+
+<!-- ============ MARKET ============ -->
+<section id="market">
+  <div class="sechead rv">
+    <div class="eyebrow">Market Position</div>
+    <h2>The <span class="gtx">Competitive</span> Landscape</h2>
+    <div class="kick">Today’s market is fragmented. <b>Our ecosystem connects it.</b></div>
+  </div>
+  <div class="grid g3">
+    <div class="card ipcard rv">
+      <div class="ct" style="color:var(--cream)">Existing Market Leaders</div>
+      <div class="cs" style="color:var(--muted)">Strong companies. Narrow focus. Each solves only a piece of the puzzle.</div>
+      <div style="margin-top:8px"><div class="compname">coursera</div>
+        <div class="compfocus">Online courses &amp; university partnerships</div>
+        <div class="cs">Massive catalog and reach, but limited implementation, certification depth, and real-world application.</div></div>
+      <div style="margin-top:12px"><div class="compname">UDACITY<small>PART OF ACCENTURE</small></div>
+        <div class="compfocus">Technical AI &amp; career training</div>
+        <div class="cs">Strong in nanodegrees and skills training, but lacks ecosystem, long-term certifications, and software solutions.</div></div>
+      <div style="margin-top:12px"><div class="compname">multiverse</div>
+        <div class="compfocus">Enterprise workforce AI training</div>
+        <div class="cs">Excellent enterprise reach and apprenticeship model, but limited creative, software, and innovation capabilities.</div></div>
+    </div>
+    <div class="card ipcard rv d1" style="grid-column:span 2;min-width:0">
+      <div class="ct gtx" style="font-size:17px">IMAGINE GROUP AI&trade; — The Complete AI Adoption Ecosystem</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:10px">
+        <div class="eit"><svg><use href="#i-grad"/></svg><div><b>Education</b><i>Hart Academy AI&trade; curriculum</i></div></div>
+        <div class="eit"><svg><use href="#i-award"/></svg><div><b>Industry Certifications</b><i>Role-based &amp; industry-recognized credentials</i></div></div>
+        <div class="eit"><svg><use href="#i-bank"/></svg><div><b>Future Accreditation Vision</b><i>Building toward institutional accreditation</i></div></div>
+        <div class="eit"><svg><use href="#i-gear"/></svg><div><b>AI Implementation</b><i>Strategy, adoption &amp; transformation support</i></div></div>
+        <div class="eit"><svg><use href="#i-flask"/></svg><div><b>AI Innovation Labs</b><i>Hands-on labs &amp; real-world experimentation</i></div></div>
+        <div class="eit"><svg><use href="#i-clapper"/></svg><div><b>Creative Studios</b><i>Content, media &amp; IP creation at scale</i></div></div>
+        <div class="eit"><svg><use href="#i-robot"/></svg><div><b>AI Software &amp; Agents</b><i>Proprietary tools, platforms &amp; AI agents</i></div></div>
+        <div class="eit"><svg><use href="#i-cube"/></svg><div><b>Industry Solutions</b><i>Plug-and-play AI solutions for any industry</i></div></div>
+        <div class="eit"><svg><use href="#i-users"/></svg><div><b>Community</b><i>Creators, learners, experts &amp; innovators</i></div></div>
+        <div class="eit"><svg><use href="#i-handshake"/></svg><div><b>Enterprise Partnerships</b><i>Long-term impact &amp; shared innovation</i></div></div>
+        <div class="eit"><svg><use href="#i-bolt"/></svg><div><b>Plug-and-Play AI Solutions</b><i>Rapid deployment. Measurable ROI.</i></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="card gold bannerX rv">
+    <div class="coin"><svg><use href="#i-target"/></svg></div>
+    <div><div class="t1 gtx">Category Creation</div>
+      <div class="cs" style="margin-top:6px">Most companies focus on teaching AI. Others build software. Others provide consulting.
+        <b style="color:var(--gold)">IMAGINE Group integrates education, implementation, creative production, software, and community
+        into one scalable ecosystem designed to accelerate AI adoption.</b><br>
+        We’re not competing to build the best AI course. <b>We’re building the operating system that connects the entire AI adoption lifecycle.</b></div></div>
+  </div>
+</section>
+<div class="secdiv"></div>
+
+<!-- ============ ECONOMICS ============ -->
+<section id="economics">
+  <div class="sechead rv">
+    <div class="eyebrow">The Financial Model</div>
+    <h2><span class="gtx">The Economics</span> of the Ecosystem</h2>
+    <div class="kick"><b>Scalable. Recurring.</b> Platform economics.</div>
+  </div>
+  <div class="counters">
+    <div class="card counter rv"><div class="val gtx"><span class="cnt" data-to="96">0</span>%</div><div class="cap">5-Year CAGR</div></div>
+    <div class="card counter rv d1"><div class="val gtx">$<span class="cnt" data-to="118.5" data-dec="1">0</span>M</div><div class="cap">FY2031 Revenue</div></div>
+    <div class="card counter rv d2"><div class="val gtx"><span class="cnt" data-to="25">0</span>K+</div><div class="cap">Active Customers by FY2031</div></div>
+    <div class="card counter rv d3"><div class="val gtx"><span class="cnt" data-to="70">0</span>%+</div><div class="cap">Long-Term Gross Margin</div></div>
+  </div>
+  <div class="grid g2">
+    <div class="card ipcard rv">
+      <div class="ct" style="text-align:center">Revenue Growth <span style="color:var(--muted);letter-spacing:.18em;font-size:10px;display:block;margin-top:3px">5-YEAR FORECAST</span></div>
+      <div class="bars" id="bars">
+        <div class="bar"><div class="v">$5.9M</div><div class="col" data-h="13"></div><div class="y">FY2027</div></div>
+        <div class="bar"><div class="v">$16.7M</div><div class="col" data-h="36"></div><div class="y">FY2028</div></div>
+        <div class="bar"><div class="v">$36.5M</div><div class="col" data-h="79"></div><div class="y">FY2029</div></div>
+        <div class="bar"><div class="v">$72.5M</div><div class="col" data-h="157"></div><div class="y">FY2030</div></div>
+        <div class="bar"><div class="v">$118.5M</div><div class="col" data-h="256"></div><div class="y">FY2031</div></div>
+      </div>
+      <div class="cs" style="text-align:center;border-top:1px solid var(--line-soft);padding-top:12px">Strong topline growth driven by multiple revenue engines, platform scale, and increasing recurring revenue.</div>
+    </div>
+    <div class="card ipcard rv d1">
+      <div class="ct" style="text-align:center">Revenue Mix <span style="color:var(--muted);letter-spacing:.18em;font-size:10px;display:block;margin-top:3px">BY FY2031</span></div>
+      <div class="donutwrap" style="flex:1">
+        <div class="donut"><div class="ring" id="donutring"></div>
+          <div class="hole"><img src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE"></div></div>
+        <div>
+          <div class="leg"><div class="sw" style="background:#E2BE62"></div><div><b>36%</b><i>Software / SaaS / AI Agents</i></div></div>
+          <div class="leg"><div class="sw" style="background:#F6E7B2"></div><div><b>22%</b><i>Education &amp; Certification</i></div></div>
+          <div class="leg"><div class="sw" style="background:#A87B1F"></div><div><b>18%</b><i>Enterprise Solutions</i></div></div>
+          <div class="leg"><div class="sw" style="background:#6E4E12"></div><div><b>14%</b><i>Industry AI Solutions</i></div></div>
+          <div class="leg"><div class="sw" style="background:#C97C4A"></div><div><b>10%</b><i>Media / IP / Licensing</i></div></div>
+        </div>
+      </div>
+      <div class="cs" style="text-align:center;border-top:1px solid var(--line-soft);padding-top:12px">Diversified revenue streams create resilience, margin expansion, and long-term value.</div>
+    </div>
+  </div>
+  <div class="mets" style="margin-top:18px">
+    <div class="card met rv"><div class="k">Customer Acquisition Cost (CAC)</div><div class="v">&lt; $1,500<small>ENTERPRISE</small></div><div class="v" style="font-size:15px">&lt; $350<small>PROFESSIONAL</small></div></div>
+    <div class="card met rv d1"><div class="k">Lifetime Value (LTV)</div><div class="v">&gt; $18,000<small>ENTERPRISE</small></div><div class="v" style="font-size:15px">&gt; $4,500<small>PROFESSIONAL</small></div></div>
+    <div class="card met rv d2"><div class="k">LTV : CAC Ratio</div><div class="v">8–12x<small>TARGET</small></div></div>
+    <div class="card met rv d3"><div class="k">Recurring Revenue</div><div class="v">60%+<small>BY FY2031</small></div></div>
+    <div class="card met rv d4"><div class="k">Operational Profitability</div><div class="v">Target<small>FY2030</small></div></div>
+    <div class="card met rv d5"><div class="k">SaaS Gross Retention</div><div class="v">85%+<small>TARGET ANNUAL RETENTION</small></div></div>
+  </div>
+  <div class="card gold bannerX rv">
+    <div class="coin"><svg><use href="#i-cycle"/></svg></div>
+    <div><div class="t1 gtx">Why This Model Compounds</div>
+      <div class="cs" style="margin-top:6px">One customer creates multiple touchpoints and revenue opportunities across the ecosystem:
+        Education &rarr; Certification &rarr; Implementation &rarr; Software / AI Agents &rarr; Enterprise Solutions &rarr; Recurring Revenue.
+        <b style="color:var(--gold)">Stronger relationships. Higher lifetime value. Expanding ecosystem.</b></div></div>
+  </div>
+</section>
+
+<!-- ============ PURPOSE / FOOTER ============ -->
+<section id="purpose">
+  <div class="inner rv">
+    <img src="../IMAGINE-group-ai-logo-Gold-TM-NEW.png" alt="IMAGINE Group AI">
+    <div class="eyebrow" style="justify-content:center">Our Purpose</div>
+    <div class="q">We combine human creativity with artificial intelligence to create
+      <b>stories, systems and experiences that move people and elevate brands.</b></div>
+  </div>
+</section>
+<footer>
+  <div class="t">IMAGINE GROUP AI&trade;</div>
+  <div class="t">One Ecosystem<i>•</i>Five Engines<i>•</i>Endless Possibilities</div>
+  <div class="c">© 2026 IMAGINE Group AI &nbsp;·&nbsp; * Market sources: PwC, Goldman Sachs, McKinsey, HolonIQ</div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('progress');
+  var burger=document.getElementById('burger'), menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){menu.classList.toggle('open')});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+  // progress + compact nav
+  function onScroll(){
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    prog.style.width=(max?100*h.scrollTop/max:0)+'%';
+    nav.classList.toggle('compact',h.scrollTop>60);
+  }
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // reveal on scroll (fallback: show everything if IO is unavailable)
+  var rvs=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(function(el){io.observe(el)});
+    // safety: anything still hidden after 2.5s in-viewport check gets revealed
+    setTimeout(function(){rvs.forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top<innerHeight&&r.bottom>0)el.classList.add('in');
+    })},2500);
+  } else { rvs.forEach(function(el){el.classList.add('in')}); }
+
+  // active menu link
+  var links=[].slice.call(document.querySelectorAll('nav a.lnk'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  var so=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id)});
+      }
+    });
+  },{rootMargin:'-38% 0px -55% 0px'});
+  secs.forEach(function(s){ if(s) so.observe(s) });
+
+  // animated counters
+  function animate(el){
+    var to=parseFloat(el.dataset.to), dec=parseInt(el.dataset.dec||'0',10), t0=null;
+    function step(t){
+      if(!t0)t0=t; var p=Math.min((t-t0)/1600,1); p=1-Math.pow(1-p,3);
+      el.textContent=(to*p).toFixed(dec);
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var co=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ animate(e.target); co.unobserve(e.target);} });
+  },{threshold:.6});
+  document.querySelectorAll('.cnt').forEach(function(el){co.observe(el)});
+
+  // bar chart grow
+  var bo=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.col').forEach(function(c,i){
+          setTimeout(function(){c.style.height=c.dataset.h+'px'},120*i);
+        });
+        bo.unobserve(e.target);
+      }
+    });
+  },{threshold:.4});
+  var bars=document.getElementById('bars'); if(bars)bo.observe(bars);
+
+  // donut sweep
+  var ring=document.getElementById('donutring');
+  function paint(p){ // p 0..1
+    var a=36*p, b=58*p? 36*p+22*p:0; // compute cumulative with sweep
+    var s1=36*p, s2=s1+22*p, s3=s2+18*p, s4=s3+14*p, s5=s4+10*p;
+    ring.style.background='conic-gradient(#E2BE62 0 '+s1+'%, #F6E7B2 '+s1+'% '+s2+'%, #A87B1F '+s2+'% '+s3+'%, #6E4E12 '+s3+'% '+s4+'%, #C97C4A '+s4+'% '+s5+'%, rgba(217,180,91,.08) '+s5+'% 100%)';
+  }
+  paint(0);
+  var dn=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var t0=null;
+        function step(t){ if(!t0)t0=t; var p=Math.min((t-t0)/1700,1); p=1-Math.pow(1-p,3); paint(p); if(p<1)requestAnimationFrame(step); }
+        requestAnimationFrame(step); dn.unobserve(e.target);
+      }
+    });
+  },{threshold:.5});
+  if(ring)dn.observe(ring);
+})();
+</script>
+</body></html>
